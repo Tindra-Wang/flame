@@ -1,5 +1,65 @@
 # AI-07 火焰数据集建模
 
+日常启动复用已准备的本地镜像，不访问Docker Hub；更新源码后追加 `-Rebuild` / `--rebuild`。首次下载/构建遇到EOF等网络错误会有限重试，持续失败时按部署文档检查Docker网络或代理。
+
+## 快速开始：在自己的电脑运行平台
+
+部署云服务器之前，其他人也可以在自己的电脑上运行平台，无需连接源码提供者的电脑。下载或解压源码后，进入包含 `start.ps1` 的项目根目录，在该目录打开 PowerShell。
+
+### Windows 首次安装与启动
+
+复制执行以下一条命令：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\start.ps1 -InstallDocker
+```
+
+脚本会检查 Docker，缺少时通过 winget 安装 Docker Desktop，然后下载所需依赖、构建镜像并启动平台。无需自行安装 Python、Node.js/npm、PostgreSQL、FDS 或 Blender。首次安装需要联网；如果 Docker/WSL2 提示重启 Windows，重启后再次执行同一命令，并确保 Docker Desktop 使用 Linux 容器引擎。
+
+启动成功后，在浏览器打开 **http://localhost:3000**。
+
+首次使用时，在网页自行设置管理员用户名和密码，没有默认管理员密码；后续成员由管理员创建账户。
+
+### NVIDIA GPU 模式
+
+如需扩散增强、GPU 训练等功能，电脑需具备兼容的 NVIDIA 显卡、驱动及容器 GPU 支持。首次启动执行：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\start.ps1 -InstallDocker -Gpu
+```
+
+已完成普通模式安装后，也可执行同一命令启用 GPU 模式。GPU 设置会保存，后续普通启动会继续使用 GPU Worker。默认 CPU 模式支持仿真、渲染、预览和审核；GPU 扩散增强及训练需要 GPU 模式。
+
+### 后续启动与停止
+
+以后启动，在同一项目根目录执行：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\start.ps1
+```
+
+停止平台：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\start.ps1 -Action Stop
+```
+
+停止会保留账户和数据。运行数据使用 Docker 命名卷，仍占用运行 Docker 的电脑磁盘空间；不要删除这些卷。
+
+### 分享源码与已有数据
+
+只分享源码，对方得到的是自己的全新平台，不会带上你的账户、上传文件和已有数据。如需使用已有数据，需要另外提供备份包并恢复；恢复后使用备份中的原账户登录。备份、恢复、Google Drive 的使用边界及迁移云服务器的步骤见[容器独立部署与云迁移](docs/容器独立部署与云迁移.md)。
+
+Ubuntu/Debian 在源码根目录执行（已安装 Docker 时可省略 `--install-docker`）：
+
+```sh
+sudo sh start.sh --install-docker
+```
+
+GPU 模式追加 `--gpu`。当前容器引擎二进制面向 Linux x86_64；ARM 机器尚未验证。
+
+下文保留旧宿主 Worker 部署和算法操作说明；新用户优先使用上面的根目录启动脚本，不要将两套 Compose 叠加启动。
+
 受控合成已接入3D编辑页：FDS场复用 → 多条件Blender渲染 → SD1.5掩膜inpainting → 候选标注/审核 → 原有版本与导出。见[实现、操作与真实验证](docs/受控合成实现与验证.md)。ControlNet权重尚未安装，真实数据算法验收尚未完成。
 
 完整平台目标设计、10张可编辑图、PERT/人力与资源成本、数据库和API预留契约见[软件设计与低成本实施方案](docs/design/软件设计与低成本实施方案.md)。这些是目标设计，现有代码的实现边界仍按下文说明。

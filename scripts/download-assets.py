@@ -31,7 +31,10 @@ def fetch_once(url, target, digest=None):
                 if time.monotonic()-last>20:
                     print(f"{target.name}: {total/1024**2:.0f} MiB",flush=True); last=time.monotonic()
     with part.open("rb") as stream: actual=hashlib.file_digest(stream,"sha256").hexdigest()
-    if digest and actual!=digest: raise ValueError(f"Checksum mismatch: {target}")
+    if digest and actual!=digest:
+        # A truncated/cached proxy response must not poison all later resumptions.
+        part.unlink()
+        raise OSError(f"Checksum mismatch; corrupt partial download removed: {target}")
     part.replace(target); print("Verified:",target.name,actual,flush=True)
 
 
@@ -74,7 +77,14 @@ def fetch_large(url,target,digest,size):
                 time.sleep(min(2**attempt,10))
     step=16*1024**2
     bounds=[(start,min(start+step,size)-1) for start in range(prefix,size,step)]
-    with ThreadPoolExecutor(max_workers=8) as pool: list(pool.map(block,bounds))
+    try:
+        with ThreadPoolExecutor(max_workers=8) as pool: list(pool.map(block,bounds))
+    except OSError as exc:
+        print(f'Range download unavailable ({type(exc).__name__}); retrying verified sequential download',flush=True)
+        # Some corporate proxies/CDNs do not reliably support concurrent ranges.
+        shutil.rmtree(chunks)
+        if part.exists(): part.unlink()
+        return fetch(url,target,digest)
     with part.open("r+b" if part.exists() else "w+b") as stream:
         stream.truncate(prefix); stream.seek(prefix)
         for start,end in bounds:
@@ -90,7 +100,12 @@ def fetch_large(url,target,digest,size):
 def main():
     p=argparse.ArgumentParser(); p.add_argument("--only",choices=["all","fds","sd15","yolo","fid","blender"],default="all"); a=p.parse_args()
     if a.only in {"all","blender"}:
-        fetch_large("https://download.blender.org/release/Blender4.5/blender-4.5.3-linux-x64.tar.xz",ROOT/"engines/downloads/blender.tar.xz","975c58fcb244273838534bba771e64ad87739216b0f9b39a888531a49a72d845",377397328)
+        filename="Blender4.5/blender-4.5.3-linux-x64.tar.xz"
+        try:
+            fetch_large("https://download.blender.org/release/"+filename,ROOT/"engines/downloads/blender.tar.xz","975c58fcb244273838534bba771e64ad87739216b0f9b39a888531a49a72d845",377397328)
+        except (OSError,ValueError):
+            print('Trying Blender university mirror with the same pinned SHA256',flush=True)
+            fetch_large("https://mirror.clarkson.edu/blender/release/"+filename,ROOT/"engines/downloads/blender.tar.xz","975c58fcb244273838534bba771e64ad87739216b0f9b39a888531a49a72d845",377397328)
     if a.only in {"all","fds"}:
         fetch("https://github.com/firemodels/fds/releases/download/FDS-6.11.1/FDS-6.11.1_SMV-6.11.2_lnx.sh",ROOT/"engines/downloads/fds.sh","ba8793b974150fdb778b3db0b69ab8db4e4668d5c52987a317e7f5ed58102ea0")
     if a.only in {"all","yolo"}:

@@ -1,0 +1,17 @@
+FROM node:24-alpine@sha256:06d7adf3e0ef61a13f1d28682726366f97a15aa1888c934d3ecec86c33918b53 AS editor
+WORKDIR /src
+COPY integrations/firephantom/web/package*.json ./integrations/firephantom/web/
+RUN --mount=type=cache,target=/root/.npm npm --prefix integrations/firephantom/web ci --no-audit --no-fund
+COPY integrations/firephantom/web ./integrations/firephantom/web
+COPY scene-editor ./scene-editor
+RUN node integrations/firephantom/web/node_modules/vite/bin/vite.js build --config scene-editor/vite.config.mjs
+FROM node:24-alpine@sha256:06d7adf3e0ef61a13f1d28682726366f97a15aa1888c934d3ecec86c33918b53 AS web
+WORKDIR /web
+COPY web/package*.json ./
+RUN --mount=type=cache,target=/root/.npm npm ci --no-audit --no-fund
+COPY web .
+COPY --from=editor /src/web/public/scene-editor ./public/scene-editor
+RUN npm run build
+FROM nginx:1.28-alpine@sha256:a8b39bd9cf0f83869a2162827a0caf6137ddf759d50a171451b335cecc87d236
+COPY web/nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=web /web/dist /usr/share/nginx/html

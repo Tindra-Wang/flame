@@ -1,7 +1,12 @@
-param([switch]$Monitoring)
+param([switch]$Monitoring,[switch]$Legacy)
 $ErrorActionPreference='Stop'
 $projectRoot=Split-Path -Parent $PSScriptRoot
 Set-Location -LiteralPath $projectRoot
+if(-not $Legacy){
+    if($Monitoring){throw 'The old monitoring overlay requires -Legacy. Use the root start.ps1 for the portable stack.'}
+    & "$projectRoot/start.ps1"
+    return
+}
 & "$projectRoot/.venv/Scripts/python.exe" scripts/init-platform.py
 $composeArgs=@('compose','--env-file','.cache/platform/compose.env','-f','compose.yaml','-f','compose.platform.yaml')
 & ./scripts/build-scene-editor.ps1

@@ -98,7 +98,9 @@ def login_cookie(response,user,db):
 
 @app.get('/api/auth')
 def auth(user=Depends(current_user),db=Depends(db_session)):
-    return {'user':user_view(user),'setup_required':db.scalar(select(func.count()).select_from(User))==0}
+    first=db.scalar(select(func.count()).select_from(User))==0
+    return {'user':user_view(user),'setup_required':first,
+            'registration_open':first or os.getenv('AI07_MANAGED_ACCOUNTS')!='1'}
 
 @app.post('/api/setup')
 def setup(data:dict,response:Response,db=Depends(db_session)):
@@ -122,6 +124,10 @@ def login(data:dict,response:Response,db=Depends(db_session)):
 
 @app.post('/api/register')
 def register(data:dict,response:Response,db=Depends(db_session)):
+    if os.getenv('AI07_MANAGED_ACCOUNTS')=='1':
+        if db.scalar(select(func.count()).select_from(User)):
+            raise HTTPException(403,'请由管理员在工程与验收中创建账户并分配角色')
+        return setup(data,response,db)
     username=str(data.get('username','')).strip()
     role=data.get('role') or 'tester'
     if not re.fullmatch(r'[A-Za-z0-9_-]{3,32}',username): raise ValueError('用户名需为3至32位字母、数字或下划线')
@@ -306,6 +312,10 @@ def jobs(project:str,user=Depends(current_user),db=Depends(db_session)):
     return [job_view(j) for j in db.scalars(select(Job).where(Job.project_id==project).order_by(Job.created.desc()).limit(100))]
 
 def enqueue(db,project,user,payload,kind='generate'):
+    if os.getenv('AI07_GPU_ENABLED')=='0' and (
+        kind in {'fid','detector-pair'} or (payload.get('enhance') and payload.get('route')=='physics')
+    ):
+        raise ValueError('当前部署未启用GPU环境；请关闭扩散增强，或使用 start.ps1 -Gpu / start.sh --gpu 准备GPU依赖后重试')
     key=str(payload.get('idempotency_key',''))
     if not 8<=len(key)<=100: raise ValueError('请求需包含8至100位幂等键')
     old=db.scalar(select(Job).where(Job.project_id==project,Job.idempotency_key==key))

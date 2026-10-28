@@ -1,0 +1,146 @@
+# Independent stack: ./start.ps1 or sh ./start.sh. No project-directory data mounts.
+name: ${COMPOSE_PROJECT_NAME:-ai07-portable}
+x-files: &files
+  - artifacts:/app/artifacts
+  - models:/app/models:ro
+services:
+  platform-db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ai07
+      POSTGRES_USER: ai07
+      POSTGRES_PASSWORD: ${AI07_DB_PASSWORD:?Use start.ps1 or start.sh}
+    volumes: [postgres:/var/lib/postgresql/data]
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U ai07 -d ai07']
+      interval: 5s
+      timeout: 3s
+      retries: 30
+    restart: unless-stopped
+  platform-api:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.platform
+    image: ${COMPOSE_PROJECT_NAME:-ai07-portable}-api:local
+    environment: &api-env
+      AI07_DATABASE_URL: postgresql+psycopg://ai07:${AI07_DB_PASSWORD}@platform-db:5432/ai07
+      AI07_LABEL_STUDIO_URL: http://annotation-platform:8080
+      AI07_LABEL_STUDIO_TOKEN: ${AI07_LS_TOKEN}
+      AI07_LABEL_STUDIO_PUBLIC_URL: ${AI07_LABEL_STUDIO_PUBLIC_URL:-http://localhost:8082}
+      AI07_ALLOWED_ORIGINS: ${AI07_ALLOWED_ORIGINS:-http://localhost:3000,http://127.0.0.1:3000}
+      AI07_SECURE_COOKIE: ${AI07_SECURE_COOKIE:-0}
+      AI07_MANAGED_ACCOUNTS: '1'
+      AI07_GPU_ENABLED: ${AI07_GPU:-0}
+    volumes:
+      - artifacts:/app/artifacts
+      - platform-state:/app/.cache/platform
+      - models:/app/models:ro
+    ports: ['127.0.0.1:${AI07_API_PORT:-8092}:8090']
+    depends_on:
+      platform-db: {condition: service_healthy}
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8090/api/health', timeout=3)"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+    restart: unless-stopped
+  platform-web:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.portable-web
+    image: ${COMPOSE_PROJECT_NAME:-ai07-portable}-web:local
+    ports: ['${AI07_BIND_ADDRESS:-127.0.0.1}:${AI07_WEB_PORT:-3000}:80']
+    depends_on:
+      platform-api: {condition: service_healthy}
+    restart: unless-stopped
+  worker:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.portable-worker
+      args:
+        API_IMAGE: ${COMPOSE_PROJECT_NAME:-ai07-portable}-api:local
+        BASE_IMAGE: ${AI07_WORKER_BASE_IMAGE:-${COMPOSE_PROJECT_NAME:-ai07-portable}-api:local}
+        ENGINE_IMAGE: ${COMPOSE_PROJECT_NAME:-ai07-portable}-engines:fds6.11.1-blender4.5.3
+    image: ${COMPOSE_PROJECT_NAME:-ai07-portable}-worker:local
+    command: [python, -u, -m, platform_api.worker, --api, 'http://platform-api:8090']
+    environment:
+      AI07_EXECUTION_MODE: native
+      OMP_NUM_THREADS: '2'
+      HF_HUB_OFFLINE: '1'
+      TORCH_HOME: /app/artifacts/torch-cache
+      HF_HOME: /app/artifacts/hf-cache
+      YOLO_CONFIG_DIR: /app/artifacts/yolo-settings
+    volumes:
+      - artifacts:/app/artifacts
+      - platform-state:/app/.cache/platform
+      - models:/app/models:ro
+    depends_on:
+      platform-api: {condition: service_healthy}
+    restart: unless-stopped
+  annotation-platform:
+    image: heartexlabs/label-studio:1.22.0
+    ports: ['127.0.0.1:${AI07_LS_PORT:-8082}:8080']
+    environment:
+      LABEL_STUDIO_USERNAME: ai07-service@localhost
+      LABEL_STUDIO_PASSWORD: ${AI07_LS_PASSWORD}
+      LABEL_STUDIO_USER_TOKEN: ${AI07_LS_TOKEN}
+      LABEL_STUDIO_ENABLE_LEGACY_API_TOKEN: 'true'
+      LABEL_STUDIO_LOCAL_FILES_SERVING_ENABLED: 'true'
+      LABEL_STUDIO_LOCAL_FILES_DOCUMENT_ROOT: /data/artifacts
+      SSRF_PROTECTION_ENABLED: 'true'
+    volumes:
+      - artifacts:/data/artifacts:ro
+      - label-studio:/label-studio/data
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/health', timeout=5)"]
+      interval: 10s
+      timeout: 6s
+      retries: 30
+      start_period: 30s
+    restart: unless-stopped
+  assets:
+    profiles: [setup]
+    image: ${COMPOSE_PROJECT_NAME:-ai07-portable}-cpu:local
+    build: .
+    entrypoint: [python, -u, /app/scripts/download-assets.py]
+    volumes:
+      - models:/app/models
+      - artifacts:/app/artifacts
+  engines:
+    profiles: [setup]
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.portable-engines
+    image: ${COMPOSE_PROJECT_NAME:-ai07-portable}-engines:fds6.11.1-blender4.5.3
+  gpu:
+    profiles: [gpu]
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.gpu
+    image: ${COMPOSE_PROJECT_NAME:-ai07-portable}-gpu:local
+  backup:
+    profiles: [tools]
+    image: ${COMPOSE_PROJECT_NAME:-ai07-portable}-api:local
+    environment: *api-env
+    entrypoint: [python, /app/scripts/portable-backup.py]
+    volumes:
+      - artifacts:/app/artifacts
+      - platform-state:/app/.cache/platform
+      - models:/app/models
+      - credentials:/state
+      - label-studio:/label-data
+      - backups:/backups
+volumes:
+  postgres:
+  artifacts:
+  models:
+  platform-state:
+    external: true
+    name: ${COMPOSE_PROJECT_NAME:-ai07-portable}_platform-state
+  label-studio:
+  credentials:
+    external: true
+    name: ${COMPOSE_PROJECT_NAME:-ai07-portable}_credentials
+  backups:
+    external: true
+    name: ${COMPOSE_PROJECT_NAME:-ai07-portable}_backups

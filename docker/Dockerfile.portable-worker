@@ -1,0 +1,29 @@
+ARG BASE_IMAGE=ai07-portable-api:local
+ARG API_IMAGE=ai07-portable-api:local
+ARG ENGINE_IMAGE=ai07-portable-engines:local
+FROM ${ENGINE_IMAGE} AS engines
+FROM ${API_IMAGE} AS api
+FROM ${BASE_IMAGE}
+WORKDIR /app
+ENV AI07_ROOT=/app PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=2
+RUN --mount=type=cache,target=/var/cache/apt,sharing=locked --mount=type=cache,target=/var/lib/apt/lists,sharing=locked \
+    if [ -f /etc/apt/sources.list.d/debian.sources ]; then sed -i 's|http://deb.debian.org|https://deb.debian.org|g' /etc/apt/sources.list.d/debian.sources; fi \
+ && for package_source in /etc/apt/sources.list /etc/apt/sources.list.d/ubuntu.sources; do \
+      if [ -f "$package_source" ]; then sed -i 's|http://archive.ubuntu.com|https://archive.ubuntu.com|g;s|http://security.ubuntu.com|https://security.ubuntu.com|g' "$package_source"; fi; \
+    done \
+ && rm -f /etc/apt/apt.conf.d/docker-clean \
+ && apt-get -o Acquire::Retries=5 -o Acquire::https::Timeout=30 update \
+ && apt-get -o Acquire::Retries=5 -o Acquire::https::Timeout=30 install -y --no-install-recommends libx11-6 libxi6 libxxf86vm1 libxfixes3 libxrender1 libsm6 libgl1 libegl1 libgomp1 libxkbcommon0 git
+COPY --from=engines /opt/fds /opt/fds
+COPY --from=engines /opt/blender /opt/blender
+COPY docker/fds /usr/local/bin/fds
+RUN chmod +x /usr/local/bin/fds && ln -s /opt/blender/blender /usr/local/bin/blender
+COPY docker/requirements-platform.in /app/requirements-platform.in
+RUN --mount=type=cache,target=/root/.cache/pip pip install -r requirements-platform.in fdsreader==1.14.0
+COPY --from=api /app/platform_api /app/platform_api
+COPY --from=api /app/fire_modeling /app/fire_modeling
+COPY --from=api /app/integrations /app/integrations
+COPY configs /app/configs
+COPY tools/create-scene-models.py /app/tools/create-scene-models.py
+ENTRYPOINT []
+CMD ["python", "-u", "-m", "platform_api.worker", "--api", "http://platform-api:8090"]

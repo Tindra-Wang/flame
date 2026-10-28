@@ -10,7 +10,8 @@ web/node_modules
 **/node_modules
 web/dist
 .drawio-tmp
-tools
+tools/*
+!tools/create-scene-models.py
 engines/*
 !engines/downloads
 engines/downloads/*

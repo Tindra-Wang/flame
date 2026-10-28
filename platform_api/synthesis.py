@@ -14,7 +14,8 @@ router=APIRouter(prefix='/api/projects/{project}/synthesis')
 def capabilities(project:str,user=Depends(current_user),db=Depends(db_session)):
     web=application()
     web.access(db,user,project)
-    return {'inpainting':(web.ROOT/'models/sd15/model_index.json').is_file(),
+    import os
+    return {'inpainting':os.getenv('AI07_GPU_ENABLED')!='0' and (web.ROOT/'models/sd15/model_index.json').is_file(),
             'controlnet_depth':(web.ROOT/'models/controlnet-depth/config.json').is_file(),
             'weathers':['clear','fog','rain','snow'],'weather_role':'visual_only'}
 

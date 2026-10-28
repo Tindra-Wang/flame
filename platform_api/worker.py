@@ -3,6 +3,7 @@ import argparse
 import os
 from pathlib import Path
 import queue
+import signal
 import subprocess
 import sys
 import threading
@@ -13,6 +14,33 @@ from fire_modeling.io import read_json, write_json
 ROOT=Path(os.getenv('AI07_ROOT',Path(__file__).resolve().parents[1])).resolve()
 
 class Cancelled(Exception): pass
+
+
+def native_command(args, container):
+    """Translate our allowlisted stage plan to local executables, without Docker access."""
+    if not container:
+        return args
+    start=args.index('--no-deps')+1
+    if args[start:start+1]!=['--name']:
+        raise ValueError('Invalid engine command')
+    service=args[start+2]; stage_args=args[start+3:]
+    if service not in {'physics','blender','enhance','gpu'}:
+        raise ValueError('Unsupported native engine')
+    module='fire_modeling' if service=='gpu' else 'fire_modeling.workflow'
+    return [sys.executable,'-m',module,*stage_args]
+
+
+def terminate_process(proc, native):
+    if native and os.name!='nt':
+        try: os.killpg(proc.pid,signal.SIGTERM)
+        except ProcessLookupError: return
+    else: proc.terminate()
+    try: proc.wait(timeout=10)
+    except subprocess.TimeoutExpired:
+        if native and os.name!='nt':
+            try: os.killpg(proc.pid,signal.SIGKILL)
+            except ProcessLookupError: pass
+        else: proc.kill()
 
 def command_plan(job):
     id=job['id']
@@ -90,9 +118,12 @@ def execute(client,job):
         return response.json()
     try:
         for stage,args,container in command_plan(job):
+            native=os.getenv('AI07_EXECUTION_MODE')=='native'
+            if native:
+                args=native_command(args,container);container=None
             if report(stage=stage,log=f'\n[{stage}] 开始执行\n')['cancel_requested']: raise Cancelled()
             env={**os.environ,'PYTHONUNBUFFERED':'1','PYTHONUTF8':'1'}
-            proc=subprocess.Popen(args,cwd=ROOT,env=env,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True,encoding='utf-8',errors='replace',shell=False)
+            proc=subprocess.Popen(args,cwd=ROOT,env=env,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True,encoding='utf-8',errors='replace',shell=False,start_new_session=native and os.name!='nt')
             output=queue.Queue()
             def collect():
                 for line in proc.stdout: output.put(line)
@@ -110,9 +141,7 @@ def execute(client,job):
             except BaseException:
                 if container:
                     subprocess.run(['docker','stop','--time','2',container],capture_output=True,timeout=15,shell=False)
-                proc.terminate()
-                try: proc.wait(timeout=10)
-                except subprocess.TimeoutExpired: proc.kill()
+                terminate_process(proc,native)
                 raise
             thread.join(timeout=2); log=''
             while not output.empty(): log+=output.get_nowait()
