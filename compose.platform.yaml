@@ -1,0 +1,94 @@
+# Overlay: docker compose --env-file .cache/platform/compose.env -f compose.yaml -f compose.platform.yaml up -d --build platform-web platform-api annotation-platform
+services:
+  platform-db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ai07
+      POSTGRES_USER: ai07
+      POSTGRES_PASSWORD: ${AI07_DB_PASSWORD:?Run scripts/init-platform.py first}
+    volumes: [platform-postgres:/var/lib/postgresql/data]
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U ai07 -d ai07']
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+  platform-api:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.platform
+    image: ai07-platform:api
+    environment:
+      AI07_DATABASE_URL: postgresql+psycopg://ai07:${AI07_DB_PASSWORD}@platform-db:5432/ai07
+      AI07_LABEL_STUDIO_URL: http://annotation-platform:8080
+      AI07_LABEL_STUDIO_TOKEN: ${AI07_LS_TOKEN}
+      AI07_LABEL_STUDIO_PUBLIC_URL: http://localhost:8082
+      AI07_ALLOWED_ORIGINS: http://localhost:3000,http://127.0.0.1:3000
+      AI07_FIREPHANTOM_URL: http://firephantom:8765
+    volumes:
+      - ./artifacts:/app/artifacts
+      - ./.cache/platform:/app/.cache/platform
+      - ./models:/app/models:ro
+    ports: ['127.0.0.1:8092:8090']
+    depends_on:
+      platform-db: {condition: service_healthy}
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8090/api/health', timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+    restart: unless-stopped
+  platform-web:
+    build: ./web
+    image: ai07-platform:web
+    ports: ['127.0.0.1:3000:80']
+    depends_on:
+      platform-api: {condition: service_healthy}
+    restart: unless-stopped
+  annotation-platform:
+    image: heartexlabs/label-studio:1.22.0
+    ports: ['127.0.0.1:8082:8080']
+    environment:
+      LABEL_STUDIO_USERNAME: ai07-service@localhost
+      LABEL_STUDIO_PASSWORD: ${AI07_LS_PASSWORD}
+      LABEL_STUDIO_USER_TOKEN: ${AI07_LS_TOKEN}
+      LABEL_STUDIO_ENABLE_LEGACY_API_TOKEN: 'true'
+      LABEL_STUDIO_LOCAL_FILES_SERVING_ENABLED: 'true'
+      LABEL_STUDIO_LOCAL_FILES_DOCUMENT_ROOT: /data/artifacts
+      SSRF_PROTECTION_ENABLED: 'true'
+    volumes:
+      - ./artifacts:/data/artifacts:ro
+      - platform-label-studio:/label-studio/data
+    restart: unless-stopped
+  prometheus:
+    profiles: [monitoring]
+    image: prom/prometheus:v3.2.1
+    ports: ['127.0.0.1:9090:9090']
+    volumes:
+      - ./docker/monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./docker/monitoring/alerts.yml:/etc/prometheus/alerts.yml:ro
+      - prometheus-data:/prometheus
+    restart: unless-stopped
+  grafana:
+    profiles: [monitoring]
+    image: grafana/grafana:12.3.1
+    ports: ['127.0.0.1:3001:3000']
+    environment:
+      GF_SECURITY_ADMIN_USER: ai07
+      GF_SECURITY_ADMIN_PASSWORD: ${AI07_GRAFANA_PASSWORD}
+      GF_USERS_ALLOW_SIGN_UP: 'false'
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./docker/monitoring/grafana:/etc/grafana/provisioning:ro
+    restart: unless-stopped
+  sonarqube:
+    profiles: [quality]
+    image: sonarqube:community
+    ports: ['127.0.0.1:9000:9000']
+    volumes: [sonarqube-data:/opt/sonarqube/data]
+volumes:
+  platform-postgres:
+  platform-label-studio:
+  prometheus-data:
+  grafana-data:
+  sonarqube-data:

@@ -1,0 +1,10 @@
+{
+  "weights": "models/yolo-local.pt",
+  "baseline_yaml": "artifacts/real_export/data.yaml",
+  "augmented_yaml": "artifacts/mixed_export/data.yaml",
+  "seed": 42,
+  "epochs": 5,
+  "batch": 4,
+  "imgsz": 384,
+  "device": "cpu"
+}

@@ -1,0 +1,642 @@
+{
+  "assumptions": {
+    "team": 5,
+    "roles": {
+      "PM": "产品经理",
+      "AR": "架构师",
+      "DEV": "开发工程师",
+      "QA": "测试师",
+      "OPS": "运维师"
+    },
+    "hours_per_person_per_workday": 3,
+    "deadline_workdays": 70,
+    "pricing_status": "unpriced; no currency amounts or assumed rates",
+    "scope": "remaining completion work; existing hardware and public weights reused"
+  },
+  "tasks": [
+    {
+      "id": "A",
+      "name": "需求、数据授权与参照可用性",
+      "optimistic": 1,
+      "most_likely": 3,
+      "pessimistic": 5,
+      "D": 3.0,
+      "variance": 0.4444444444444444,
+      "dependencies": [],
+      "roles": [
+        "PM",
+        "QA"
+      ],
+      "ES": 0,
+      "ED": 3.0,
+      "hours": 18.0,
+      "labor_cost": null,
+      "LE": 3.0,
+      "LS": 0.0,
+      "TF": 0.0,
+      "FF": 0.0,
+      "critical": true,
+      "resource_start": 0,
+      "resource_finish": 3,
+      "cash_cost": null,
+      "token_cost": null,
+      "hardware_cost": null,
+      "total_cost": null,
+      "cost_formula": "sum(role_hours * role_rate) + attributed_resource_usage * quoted_unit_price"
+    },
+    {
+      "id": "B",
+      "name": "架构、ER与API契约",
+      "optimistic": 2,
+      "most_likely": 4,
+      "pessimistic": 6,
+      "D": 4.0,
+      "variance": 0.4444444444444444,
+      "dependencies": [
+        "A"
+      ],
+      "roles": [
+        "AR"
+      ],
+      "ES": 3.0,
+      "ED": 7.0,
+      "hours": 12.0,
+      "labor_cost": null,
+      "LE": 7.0,
+      "LS": 3.0,
+      "TF": 0.0,
+      "FF": 0.0,
+      "critical": true,
+      "resource_start": 3,
+      "resource_finish": 7,
+      "cash_cost": null,
+      "token_cost": null,
+      "hardware_cost": null,
+      "total_cost": null,
+      "cost_formula": "sum(role_hours * role_rate) + attributed_resource_usage * quoted_unit_price"
+    },
+    {
+      "id": "C",
+      "name": "测试/CI/Sonar骨架",
+      "optimistic": 2,
+      "most_likely": 4,
+      "pessimistic": 6,
+      "D": 4.0,
+      "variance": 0.4444444444444444,
+      "dependencies": [
+        "B"
+      ],
+      "roles": [
+        "QA",
+        "OPS"
+      ],
+      "ES": 7.0,
+      "ED": 11.0,
+      "hours": 24.0,
+      "labor_cost": null,
+      "LE": 15.0,
+      "LS": 11.0,
+      "TF": 4.0,
+      "FF": 1.0,
+      "critical": false,
+      "resource_start": 7,
+      "resource_finish": 11,
+      "cash_cost": null,
+      "token_cost": null,
+      "hardware_cost": null,
+      "total_cost": null,
+      "cost_formula": "sum(role_hours * role_rate) + attributed_resource_usage * quoted_unit_price"
+    },
+    {
+      "id": "D",
+      "name": "Web页面与交互骨架",
+      "optimistic": 3,
+      "most_likely": 5,
+      "pessimistic": 7,
+      "D": 5.0,
+      "variance": 0.4444444444444444,
+      "dependencies": [
+        "B"
+      ],
+      "roles": [
+        "DEV"
+      ],
+      "ES": 7.0,
+      "ED": 12.0,
+      "hours": 15.0,
+      "labor_cost": null,
+      "LE": 21.0,
+      "LS": 16.0,
+      "TF": 9.0,
+      "FF": 9.0,
+      "critical": false,
+      "resource_start": 7,
+      "resource_finish": 12,
+      "cash_cost": null,
+      "token_cost": null,
+      "hardware_cost": null,
+      "total_cost": null,
+      "cost_formula": "sum(role_hours * role_rate) + attributed_resource_usage * quoted_unit_price"
+    },
+    {
+      "id": "E",
+      "name": "API、账户与项目隔离",
+      "optimistic": 3,
+      "most_likely": 5,
+      "pessimistic": 7,
+      "D": 5.0,
+      "variance": 0.4444444444444444,
+      "dependencies": [
+        "B"
+      ],
+      "roles": [
+        "DEV"
+      ],
+      "ES": 7.0,
+      "ED": 12.0,
+      "hours": 15.0,
+      "labor_cost": null,
+      "LE": 15.0,
+      "LS": 10.0,
+      "TF": 3.0,
+      "FF": 0.0,
+      "critical": false,
+      "resource_start": 12,
+      "resource_finish": 17,
+      "cash_cost": null,
+      "token_cost": null,
+      "hardware_cost": null,
+      "total_cost": null,
+      "cost_formula": "sum(role_hours * role_rate) + attributed_resource_usage * quoted_unit_price"
+    },
+    {
+      "id": "F",
+      "name": "FDS/Blender建模与算法验证",
+      "optimistic": 6,
+      "most_likely": 8,
+      "pessimistic": 10,
+      "D": 8.0,
+      "variance": 0.4444444444444444,
+      "dependencies": [
+        "B"
+      ],
+      "roles": [
+        "AR"
+      ],
+      "ES": 7.0,
+      "ED": 15.0,
+      "hours": 24.0,
+      "labor_cost": null,
+      "LE": 15.0,
+      "LS": 7.0,
+      "TF": 0.0,
+      "FF": 0.0,
+      "critical": true,
+      "resource_start": 7,
+      "resource_finish": 15,
+      "cash_cost": null,
+      "token_cost": null,
+      "hardware_cost": null,
+      "total_cost": null,
+      "cost_formula": "sum(role_hours * role_rate) + attributed_resource_usage * quoted_unit_price"
+    },
+    {
+      "id": "G",
+      "name": "SD增强原型与可复现性",
+      "optimistic": 4,
+      "most_likely": 6,
+      "pessimistic": 8,
+      "D": 6.0,
+      "variance": 0.4444444444444444,
+      "dependencies": [
+        "F"
+      ],
+      "roles": [
+        "AR"
+      ],
+      "ES": 15.0,
+      "ED": 21.0,
+      "hours": 18.0,
+      "labor_cost": null,
+      "LE": 21.0,
+      "LS": 15.0,
+      "TF": 0.0,
+      "FF": 0.0,
+      "critical": true,
+      "resource_start": 15,
+      "resource_finish": 21,
+      "cash_cost": null,
+      "token_cost": null,
+      "hardware_cost": null,
+      "total_cost": null,
+      "cost_formula": "sum(role_hours * role_rate) + attributed_resource_usage * quoted_unit_price"
+    },
+    {
+      "id": "H",
+      "name": "异步任务、取消重试与预算",
+      "optimistic": 3,
+      "most_likely": 5,
+      "pessimistic": 7,
+      "D": 5.0,
+      "variance": 0.4444444444444444,
+      "dependencies": [
+        "E"
+      ],
+      "roles": [
+        "DEV"
+      ],
+      "ES": 12.0,
+      "ED": 17.0,
+      "hours": 15.0,
+      "labor_cost": null,
+      "LE": 20.0,
+      "LS": 15.0,
+      "TF": 3.0,
+      "FF": 0.0,
+      "critical": false,
+      "resource_start": 17,
+      "resource_finish": 22,
+      "cash_cost": null,
+      "token_cost": null,
+      "hardware_cost": null,
+      "total_cost": null,
+      "cost_formula": "sum(role_hours * role_rate) + attributed_resource_usage * quoted_unit_price"
+    },
+    {
+      "id": "I",
+      "name": "统一Web贯通与结果对比",
+      "optimistic": 3,
+      "most_likely": 5,
+      "pessimistic": 7,
+      "D": 5.0,
+      "variance": 0.4444444444444444,
+      "dependencies": [
+        "D",
+        "H",
+        "G"
+      ],
+      "roles": [
+        "DEV"
+      ],
+      "ES": 21.0,
+      "ED": 26.0,
+      "hours": 15.0,
+      "labor_cost": null,
+      "LE": 26.0,
+      "LS": 21.0,
+      "TF": 0.0,
+      "FF": 0.0,
+      "critical": true,
+      "resource_start": 22,
+      "resource_finish": 27,
+      "cash_cost": null,
+      "token_cost": null,
+      "hardware_cost": null,
+      "total_cost": null,
+      "cost_formula": "sum(role_hours * role_rate) + attributed_resource_usage * quoted_unit_price"
+    },
+    {
+      "id": "J",
+      "name": "Label Studio同步、审核与质检",
+      "optimistic": 3,
+      "most_likely": 5,
+      "pessimistic": 7,
+      "D": 5.0,
+      "variance": 0.4444444444444444,
+      "dependencies": [
+        "C",
+        "E"
+      ],
+      "roles": [
+        "DEV",
+        "QA"
+      ],
+      "ES": 12.0,
+      "ED": 17.0,
+      "hours": 30.0,
+      "labor_cost": null,
+      "LE": 20.0,
+      "LS": 15.0,
+      "TF": 3.0,
+      "FF": 0.0,
+      "critical": false,
+      "resource_start": 27,
+      "resource_finish": 32,
+      "cash_cost": null,
+      "token_cost": null,
+      "hardware_cost": null,
+      "total_cost": null,
+      "cost_formula": "sum(role_hours * role_rate) + attributed_resource_usage * quoted_unit_price"
+    },
+    {
+      "id": "K",
+      "name": "DVC冻结、版本与导出",
+      "optimistic": 2,
+      "most_likely": 4,
+      "pessimistic": 6,
+      "D": 4.0,
+      "variance": 0.4444444444444444,
+      "dependencies": [
+        "H",
+        "J"
+      ],
+      "roles": [
+        "DEV"
+      ],
+      "ES": 17.0,
+      "ED": 21.0,
+      "hours": 12.0,
+      "labor_cost": null,
+      "LE": 24.0,
+      "LS": 20.0,
+      "TF": 3.0,
+      "FF": 0.0,
+      "critical": false,
+      "resource_start": 32,
+      "resource_finish": 36,
+      "cash_cost": null,
+      "token_cost": null,
+      "hardware_cost": null,
+      "total_cost": null,
+      "cost_formula": "sum(role_hours * role_rate) + attributed_resource_usage * quoted_unit_price"
+    },
+    {
+      "id": "L",
+      "name": "真实数据与物理/检测评价",
+      "optimistic": 5,
+      "most_likely": 7,
+      "pessimistic": 9,
+      "D": 7.0,
+      "variance": 0.4444444444444444,
+      "dependencies": [
+        "G",
+        "J",
+        "K"
+      ],
+      "roles": [
+        "AR",
+        "QA"
+      ],
+      "ES": 21.0,
+      "ED": 28.0,
+      "hours": 42.0,
+      "labor_cost": null,
+      "LE": 31.0,
+      "LS": 24.0,
+      "TF": 3.0,
+      "FF": 3.0,
+      "critical": false,
+      "resource_start": 36,
+      "resource_finish": 43,
+      "cash_cost": null,
+      "token_cost": null,
+      "hardware_cost": null,
+      "total_cost": null,
+      "cost_formula": "sum(role_hours * role_rate) + attributed_resource_usage * quoted_unit_price"
+    },
+    {
+      "id": "M",
+      "name": "云预部署、监控告警与备份",
+      "optimistic": 3,
+      "most_likely": 5,
+      "pessimistic": 7,
+      "D": 5.0,
+      "variance": 0.4444444444444444,
+      "dependencies": [
+        "I",
+        "K"
+      ],
+      "roles": [
+        "OPS"
+      ],
+      "ES": 26.0,
+      "ED": 31.0,
+      "hours": 15.0,
+      "labor_cost": null,
+      "LE": 31.0,
+      "LS": 26.0,
+      "TF": 0.0,
+      "FF": 0.0,
+      "critical": true,
+      "resource_start": 36,
+      "resource_finish": 41,
+      "cash_cost": null,
+      "token_cost": null,
+      "hardware_cost": null,
+      "total_cost": null,
+      "cost_formula": "sum(role_hours * role_rate) + attributed_resource_usage * quoted_unit_price"
+    },
+    {
+      "id": "N",
+      "name": "全流程、性能安全与文档测试",
+      "optimistic": 4,
+      "most_likely": 6,
+      "pessimistic": 8,
+      "D": 6.0,
+      "variance": 0.4444444444444444,
+      "dependencies": [
+        "M",
+        "L"
+      ],
+      "roles": [
+        "QA",
+        "DEV"
+      ],
+      "ES": 31.0,
+      "ED": 37.0,
+      "hours": 36.0,
+      "labor_cost": null,
+      "LE": 37.0,
+      "LS": 31.0,
+      "TF": 0.0,
+      "FF": 0.0,
+      "critical": true,
+      "resource_start": 43,
+      "resource_finish": 49,
+      "cash_cost": null,
+      "token_cost": null,
+      "hardware_cost": null,
+      "total_cost": null,
+      "cost_formula": "sum(role_hours * role_rate) + attributed_resource_usage * quoted_unit_price"
+    },
+    {
+      "id": "O",
+      "name": "云Demo、手册、PPT与视频",
+      "optimistic": 2,
+      "most_likely": 4,
+      "pessimistic": 6,
+      "D": 4.0,
+      "variance": 0.4444444444444444,
+      "dependencies": [
+        "N"
+      ],
+      "roles": [
+        "PM",
+        "OPS"
+      ],
+      "ES": 37.0,
+      "ED": 41.0,
+      "hours": 24.0,
+      "labor_cost": null,
+      "LE": 41.0,
+      "LS": 37.0,
+      "TF": 0.0,
+      "FF": 0.0,
+      "critical": true,
+      "resource_start": 49,
+      "resource_finish": 53,
+      "cash_cost": null,
+      "token_cost": null,
+      "hardware_cost": null,
+      "total_cost": null,
+      "cost_formula": "sum(role_hours * role_rate) + attributed_resource_usage * quoted_unit_price"
+    },
+    {
+      "id": "P",
+      "name": "连续可用性观测与缺陷复核",
+      "optimistic": 5,
+      "most_likely": 7,
+      "pessimistic": 9,
+      "D": 7.0,
+      "variance": 0.4444444444444444,
+      "dependencies": [
+        "M"
+      ],
+      "roles": [
+        "OPS"
+      ],
+      "ES": 31.0,
+      "ED": 38.0,
+      "hours": 21.0,
+      "labor_cost": null,
+      "LE": 41.0,
+      "LS": 34.0,
+      "TF": 3.0,
+      "FF": 3.0,
+      "critical": false,
+      "resource_start": 41,
+      "resource_finish": 48,
+      "cash_cost": null,
+      "token_cost": null,
+      "hardware_cost": null,
+      "total_cost": null,
+      "cost_formula": "sum(role_hours * role_rate) + attributed_resource_usage * quoted_unit_price"
+    },
+    {
+      "id": "Q",
+      "name": "验收证据、追溯与交付",
+      "optimistic": 1,
+      "most_likely": 3,
+      "pessimistic": 5,
+      "D": 3.0,
+      "variance": 0.4444444444444444,
+      "dependencies": [
+        "O",
+        "P"
+      ],
+      "roles": [
+        "PM",
+        "AR",
+        "DEV",
+        "QA",
+        "OPS"
+      ],
+      "ES": 41.0,
+      "ED": 44.0,
+      "hours": 45.0,
+      "labor_cost": null,
+      "LE": 44.0,
+      "LS": 41.0,
+      "TF": 0.0,
+      "FF": 0.0,
+      "critical": true,
+      "resource_start": 53,
+      "resource_finish": 56,
+      "cash_cost": null,
+      "token_cost": null,
+      "hardware_cost": null,
+      "total_cost": null,
+      "cost_formula": "sum(role_hours * role_rate) + attributed_resource_usage * quoted_unit_price"
+    }
+  ],
+  "logical_finish": 44.0,
+  "resource_finish": 56,
+  "project_buffer": 9,
+  "planned_commitment": 65,
+  "deadline_slack": 5,
+  "critical_tasks": [
+    "A",
+    "B",
+    "F",
+    "G",
+    "I",
+    "M",
+    "N",
+    "O",
+    "Q"
+  ],
+  "labor_hours": 381.0,
+  "role_hours": {
+    "PM": 30,
+    "AR": 84,
+    "DEV": 114,
+    "QA": 84,
+    "OPS": 69
+  },
+  "resource_plan": [
+    {
+      "resource": "cloud_cpu",
+      "quantity": 28,
+      "unit": "day",
+      "unit_price": null
+    },
+    {
+      "resource": "gpu",
+      "quantity": 24,
+      "unit": "GPU_hour",
+      "unit_price": null
+    },
+    {
+      "resource": "local_compute",
+      "quantity": 100,
+      "unit": "hour",
+      "unit_price": null
+    },
+    {
+      "resource": "input_tokens",
+      "quantity": 2,
+      "unit": "million_token",
+      "unit_price": null
+    },
+    {
+      "resource": "output_tokens",
+      "quantity": 0.3,
+      "unit": "million_token",
+      "unit_price": null
+    },
+    {
+      "resource": "storage_backup_egress",
+      "quantity": null,
+      "unit": "GB_month_or_GB",
+      "unit_price": null
+    },
+    {
+      "resource": "electricity",
+      "quantity": null,
+      "unit": "kWh",
+      "unit_price": null
+    }
+  ],
+  "cost_formulas": {
+    "labor": "sum over all tasks and roles: hours * role_rate",
+    "resource": "sum: metered_quantity * quoted_unit_price",
+    "reserve": "eligible_cash_cost * reserve_ratio",
+    "total": "sum all task costs + approved reserve; do not sum only critical path"
+  },
+  "cash_base": null,
+  "cash_reserve": null,
+  "cash_ceiling": null,
+  "labor_imputed": null,
+  "hardware_imputed": null,
+  "total_economic": null
+}

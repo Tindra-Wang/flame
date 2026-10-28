@@ -1,0 +1,10 @@
+fastapi==0.143.5
+uvicorn==0.54.0
+sqlalchemy==2.1.5
+psycopg[binary]==3.3.6
+httpx==0.28.1
+dvc==3.67.1
+python-multipart==0.0.32
+numpy>=1.24,<3
+Pillow>=10,<13
+scipy>=1.10,<2

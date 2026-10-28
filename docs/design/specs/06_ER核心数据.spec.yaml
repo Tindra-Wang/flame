@@ -1,0 +1,2547 @@
+{
+  "meta": {
+    "title": "ER 图：生成、标注与数据版本",
+    "theme": "tech-blue",
+    "profile": "default",
+    "layout": "horizontal",
+    "canvas": "3040x2464",
+    "font": {
+      "primary": "Microsoft YaHei",
+      "cjk": "Microsoft YaHei",
+      "formula": "Microsoft YaHei"
+    }
+  },
+  "nodes": [
+    {
+      "id": "title",
+      "label": "ER 图：生成、标注与数据版本",
+      "type": "text",
+      "bounds": {
+        "x": 48,
+        "y": 24,
+        "width": 2944,
+        "height": 48
+      },
+      "style": {
+        "fontSize": 28,
+        "align": "left",
+        "fontFamily": "Microsoft YaHei"
+      }
+    },
+    {
+      "id": "subtitle",
+      "label": "Chen概念ER图（目标设计）；主键与属性已分离；关系无方向箭头，外键及项目隔离约束以SQL草案为准",
+      "type": "text",
+      "bounds": {
+        "x": 48,
+        "y": 80,
+        "width": 2944,
+        "height": 48
+      },
+      "style": {
+        "fontSize": 18,
+        "align": "left",
+        "fontFamily": "Microsoft YaHei"
+      }
+    },
+    {
+      "id": "project",
+      "label": "项目\nproject",
+      "type": "service",
+      "bounds": {
+        "x": 230,
+        "y": 380,
+        "width": 240,
+        "height": 80
+      },
+      "style": {
+        "fontSize": 19,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B",
+        "shape": "rectangle",
+        "rounded": 0
+      }
+    },
+    {
+      "id": "project_attr0",
+      "label": "id",
+      "type": "user",
+      "bounds": {
+        "x": 90,
+        "y": 236,
+        "width": 220,
+        "height": 68
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFFFFF",
+        "strokeColor": "#64748B",
+        "shape": "ellipse",
+        "rounded": 0,
+        "fontStyle": 4
+      }
+    },
+    {
+      "id": "project_attr1",
+      "label": "name",
+      "type": "user",
+      "bounds": {
+        "x": 390,
+        "y": 236,
+        "width": 220,
+        "height": 68
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFFFFF",
+        "strokeColor": "#64748B",
+        "shape": "ellipse",
+        "rounded": 0,
+        "fontStyle": 0
+      }
+    },
+    {
+      "id": "project_attr2",
+      "label": "owner_id",
+      "type": "user",
+      "bounds": {
+        "x": 240,
+        "y": 536,
+        "width": 220,
+        "height": 68
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFFFFF",
+        "strokeColor": "#64748B",
+        "shape": "ellipse",
+        "rounded": 0,
+        "fontStyle": 0
+      }
+    },
+    {
+      "id": "scene",
+      "label": "场景配置\nscene_config",
+      "type": "service",
+      "bounds": {
+        "x": 950,
+        "y": 380,
+        "width": 240,
+        "height": 80
+      },
+      "style": {
+        "fontSize": 19,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B",
+        "shape": "rectangle",
+        "rounded": 0
+      }
+    },
+    {
+      "id": "scene_attr0",
+      "label": "id",
+      "type": "user",
+      "bounds": {
+        "x": 810,
+        "y": 236,
+        "width": 220,
+        "height": 68
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFFFFF",
+        "strokeColor": "#64748B",
+        "shape": "ellipse",
+        "rounded": 0,
+        "fontStyle": 4
+      }
+    },
+    {
+      "id": "scene_attr1",
+      "label": "name",
+      "type": "user",
+      "bounds": {
+        "x": 1110,
+        "y": 236,
+        "width": 220,
+        "height": 68
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFFFFF",
+        "strokeColor": "#64748B",
+        "shape": "ellipse",
+        "rounded": 0,
+        "fontStyle": 0
+      }
+    },
+    {
+      "id": "scene_attr2",
+      "label": "config_sha256",
+      "type": "user",
+      "bounds": {
+        "x": 960,
+        "y": 536,
+        "width": 220,
+        "height": 68
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFFFFF",
+        "strokeColor": "#64748B",
+        "shape": "ellipse",
+        "rounded": 0,
+        "fontStyle": 0
+      }
+    },
+    {
+      "id": "job",
+      "label": "任务\njob",
+      "type": "service",
+      "bounds": {
+        "x": 1670,
+        "y": 380,
+        "width": 240,
+        "height": 80
+      },
+      "style": {
+        "fontSize": 19,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B",
+        "shape": "rectangle",
+        "rounded": 0
+      }
+    },
+    {
+      "id": "job_attr0",
+      "label": "id",
+      "type": "user",
+      "bounds": {
+        "x": 1530,
+        "y": 236,
+        "width": 220,
+        "height": 68
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFFFFF",
+        "strokeColor": "#64748B",
+        "shape": "ellipse",
+        "rounded": 0,
+        "fontStyle": 4
+      }
+    },
+    {
+      "id": "job_attr1",
+      "label": "status",
+      "type": "user",
+      "bounds": {
+        "x": 1830,
+        "y": 236,
+        "width": 220,
+        "height": 68
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFFFFF",
+        "strokeColor": "#64748B",
+        "shape": "ellipse",
+        "rounded": 0,
+        "fontStyle": 0
+      }
+    },
+    {
+      "id": "job_attr2",
+      "label": "lease_generation",
+      "type": "user",
+      "bounds": {
+        "x": 1680,
+        "y": 536,
+        "width": 220,
+        "height": 68
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFFFFF",
+        "strokeColor": "#64748B",
+        "shape": "ellipse",
+        "rounded": 0,
+        "fontStyle": 0
+      }
+    },
+    {
+      "id": "stage",
+      "label": "任务阶段\njob_stage",
+      "type": "service",
+      "bounds": {
+        "x": 2390,
+        "y": 380,
+        "width": 240,
+        "height": 80
+      },
+      "style": {
+        "fontSize": 19,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B",
+        "shape": "rectangle",
+        "rounded": 0
+      }
+    },
+    {
+      "id": "stage_attr0",
+      "label": "id",
+      "type": "user",
+      "bounds": {
+        "x": 2250,
+        "y": 236,
+        "width": 220,
+        "height": 68
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFFFFF",
+        "strokeColor": "#64748B",
+        "shape": "ellipse",
+        "rounded": 0,
+        "fontStyle": 4
+      }
+    },
+    {
+      "id": "stage_attr1",
+      "label": "name",
+      "type": "user",
+      "bounds": {
+        "x": 2550,
+        "y": 236,
+        "width": 220,
+        "height": 68
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFFFFF",
+        "strokeColor": "#64748B",
+        "shape": "ellipse",
+        "rounded": 0,
+        "fontStyle": 0
+      }
+    },
+    {
+      "id": "stage_attr2",
+      "label": "attempt",
+      "type": "user",
+      "bounds": {
+        "x": 2250,
+        "y": 536,
+        "width": 220,
+        "height": 68
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFFFFF",
+        "strokeColor": "#64748B",
+        "shape": "ellipse",
+        "rounded": 0,
+        "fontStyle": 0
+      }
+    },
+    {
+      "id": "stage_elapsed",
+      "label": "耗时（派生）",
+      "type": "user",
+      "bounds": {
+        "x": 2550,
+        "y": 536,
+        "width": 220,
+        "height": 68
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFFFFF",
+        "strokeColor": "#64748B",
+        "shape": "ellipse",
+        "dashed": 1
+      }
+    },
+    {
+      "id": "source",
+      "label": "数据来源\nsource_record",
+      "type": "service",
+      "bounds": {
+        "x": 230,
+        "y": 980,
+        "width": 240,
+        "height": 80
+      },
+      "style": {
+        "fontSize": 19,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B",
+        "shape": "rectangle",
+        "rounded": 0
+      }
+    },
+    {
+      "id": "source_attr0",
+      "label": "id",
+      "type": "user",
+      "bounds": {
+        "x": 90,
+        "y": 836,
+        "width": 220,
+        "height": 68
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFFFFF",
+        "strokeColor": "#64748B",
+        "shape": "ellipse",
+        "rounded": 0,
+        "fontStyle": 4
+      }
+    },
+    {
+      "id": "source_attr1",
+      "label": "license_id",
+      "type": "user",
+      "bounds": {
+        "x": 390,
+        "y": 836,
+        "width": 220,
+        "height": 68
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFFFFF",
+        "strokeColor": "#64748B",
+        "shape": "ellipse",
+        "rounded": 0,
+        "fontStyle": 0
+      }
+    },
+    {
+      "id": "source_attr2",
+      "label": "uri",
+      "type": "user",
+      "bounds": {
+        "x": 240,
+        "y": 1136,
+        "width": 220,
+        "height": 68
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFFFFF",
+        "strokeColor": "#64748B",
+        "shape": "ellipse",
+        "rounded": 0,
+        "fontStyle": 0
+      }
+    },
+    {
+      "id": "sample",
+      "label": "样本\nsample",
+      "type": "service",
+      "bounds": {
+        "x": 950,
+        "y": 980,
+        "width": 240,
+        "height": 80
+      },
+      "style": {
+        "fontSize": 19,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B",
+        "shape": "rectangle",
+        "rounded": 0
+      }
+    },
+    {
+      "id": "sample_attr0",
+      "label": "id",
+      "type": "user",
+      "bounds": {
+        "x": 810,
+        "y": 836,
+        "width": 220,
+        "height": 68
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFFFFF",
+        "strokeColor": "#64748B",
+        "shape": "ellipse",
+        "rounded": 0,
+        "fontStyle": 4
+      }
+    },
+    {
+      "id": "sample_attr1",
+      "label": "source_kind",
+      "type": "user",
+      "bounds": {
+        "x": 1110,
+        "y": 836,
+        "width": 220,
+        "height": 68
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFFFFF",
+        "strokeColor": "#64748B",
+        "shape": "ellipse",
+        "rounded": 0,
+        "fontStyle": 0
+      }
+    },
+    {
+      "id": "sample_attr2",
+      "label": "group_id",
+      "type": "user",
+      "bounds": {
+        "x": 960,
+        "y": 1136,
+        "width": 220,
+        "height": 68
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFFFFF",
+        "strokeColor": "#64748B",
+        "shape": "ellipse",
+        "rounded": 0,
+        "fontStyle": 0
+      }
+    },
+    {
+      "id": "annotation",
+      "label": "标签修订\nannotation_revision",
+      "type": "service",
+      "bounds": {
+        "x": 1670,
+        "y": 980,
+        "width": 240,
+        "height": 80
+      },
+      "style": {
+        "fontSize": 19,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B",
+        "shape": "rectangle",
+        "rounded": 0
+      }
+    },
+    {
+      "id": "annotation_attr0",
+      "label": "id",
+      "type": "user",
+      "bounds": {
+        "x": 1530,
+        "y": 836,
+        "width": 220,
+        "height": 68
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFFFFF",
+        "strokeColor": "#64748B",
+        "shape": "ellipse",
+        "rounded": 0,
+        "fontStyle": 4
+      }
+    },
+    {
+      "id": "annotation_attr1",
+      "label": "revision",
+      "type": "user",
+      "bounds": {
+        "x": 1830,
+        "y": 836,
+        "width": 220,
+        "height": 68
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFFFFF",
+        "strokeColor": "#64748B",
+        "shape": "ellipse",
+        "rounded": 0,
+        "fontStyle": 0
+      }
+    },
+    {
+      "id": "annotation_attr2",
+      "label": "image_sha256",
+      "type": "user",
+      "bounds": {
+        "x": 1680,
+        "y": 1136,
+        "width": 220,
+        "height": 68
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFFFFF",
+        "strokeColor": "#64748B",
+        "shape": "ellipse",
+        "rounded": 0,
+        "fontStyle": 0
+      }
+    },
+    {
+      "id": "box",
+      "label": "标注框\nlabel_box",
+      "type": "service",
+      "bounds": {
+        "x": 2390,
+        "y": 980,
+        "width": 240,
+        "height": 80
+      },
+      "style": {
+        "fontSize": 19,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B",
+        "shape": "rectangle",
+        "rounded": 0
+      }
+    },
+    {
+      "id": "box_attr0",
+      "label": "id",
+      "type": "user",
+      "bounds": {
+        "x": 2250,
+        "y": 836,
+        "width": 220,
+        "height": 68
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFFFFF",
+        "strokeColor": "#64748B",
+        "shape": "ellipse",
+        "rounded": 0,
+        "fontStyle": 4
+      }
+    },
+    {
+      "id": "box_attr1",
+      "label": "class_name",
+      "type": "user",
+      "bounds": {
+        "x": 2550,
+        "y": 836,
+        "width": 220,
+        "height": 68
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFFFFF",
+        "strokeColor": "#64748B",
+        "shape": "ellipse",
+        "rounded": 0,
+        "fontStyle": 0
+      }
+    },
+    {
+      "id": "box_attr2",
+      "label": "x0",
+      "type": "user",
+      "bounds": {
+        "x": 2400,
+        "y": 1136,
+        "width": 220,
+        "height": 68
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFFFFF",
+        "strokeColor": "#64748B",
+        "shape": "ellipse",
+        "rounded": 0,
+        "fontStyle": 0
+      }
+    },
+    {
+      "id": "version",
+      "label": "数据集版本\ndataset_version",
+      "type": "service",
+      "bounds": {
+        "x": 230,
+        "y": 1580,
+        "width": 240,
+        "height": 80
+      },
+      "style": {
+        "fontSize": 19,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B",
+        "shape": "rectangle",
+        "rounded": 0
+      }
+    },
+    {
+      "id": "version_attr0",
+      "label": "id",
+      "type": "user",
+      "bounds": {
+        "x": 90,
+        "y": 1436,
+        "width": 220,
+        "height": 68
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFFFFF",
+        "strokeColor": "#64748B",
+        "shape": "ellipse",
+        "rounded": 0,
+        "fontStyle": 4
+      }
+    },
+    {
+      "id": "version_attr1",
+      "label": "version",
+      "type": "user",
+      "bounds": {
+        "x": 390,
+        "y": 1436,
+        "width": 220,
+        "height": 68
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFFFFF",
+        "strokeColor": "#64748B",
+        "shape": "ellipse",
+        "rounded": 0,
+        "fontStyle": 0
+      }
+    },
+    {
+      "id": "version_attr2",
+      "label": "state",
+      "type": "user",
+      "bounds": {
+        "x": 240,
+        "y": 1736,
+        "width": 220,
+        "height": 68
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFFFFF",
+        "strokeColor": "#64748B",
+        "shape": "ellipse",
+        "rounded": 0,
+        "fontStyle": 0
+      }
+    },
+    {
+      "id": "artifact",
+      "label": "产物\nartifact",
+      "type": "service",
+      "bounds": {
+        "x": 950,
+        "y": 1580,
+        "width": 240,
+        "height": 80
+      },
+      "style": {
+        "fontSize": 19,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B",
+        "shape": "rectangle",
+        "rounded": 0
+      }
+    },
+    {
+      "id": "artifact_attr0",
+      "label": "id",
+      "type": "user",
+      "bounds": {
+        "x": 810,
+        "y": 1436,
+        "width": 220,
+        "height": 68
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFFFFF",
+        "strokeColor": "#64748B",
+        "shape": "ellipse",
+        "rounded": 0,
+        "fontStyle": 4
+      }
+    },
+    {
+      "id": "artifact_attr1",
+      "label": "sha256",
+      "type": "user",
+      "bounds": {
+        "x": 1110,
+        "y": 1436,
+        "width": 220,
+        "height": 68
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFFFFF",
+        "strokeColor": "#64748B",
+        "shape": "ellipse",
+        "rounded": 0,
+        "fontStyle": 0
+      }
+    },
+    {
+      "id": "artifact_attr2",
+      "label": "storage_uri",
+      "type": "user",
+      "bounds": {
+        "x": 960,
+        "y": 1736,
+        "width": 220,
+        "height": 68
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFFFFF",
+        "strokeColor": "#64748B",
+        "shape": "ellipse",
+        "rounded": 0,
+        "fontStyle": 0
+      }
+    },
+    {
+      "id": "review",
+      "label": "审核决定\nreview_decision",
+      "type": "service",
+      "bounds": {
+        "x": 1670,
+        "y": 1580,
+        "width": 240,
+        "height": 80
+      },
+      "style": {
+        "fontSize": 19,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B",
+        "shape": "rectangle",
+        "rounded": 0
+      }
+    },
+    {
+      "id": "review_attr0",
+      "label": "id",
+      "type": "user",
+      "bounds": {
+        "x": 1530,
+        "y": 1436,
+        "width": 220,
+        "height": 68
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFFFFF",
+        "strokeColor": "#64748B",
+        "shape": "ellipse",
+        "rounded": 0,
+        "fontStyle": 4
+      }
+    },
+    {
+      "id": "review_attr1",
+      "label": "decision",
+      "type": "user",
+      "bounds": {
+        "x": 1830,
+        "y": 1436,
+        "width": 220,
+        "height": 68
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFFFFF",
+        "strokeColor": "#64748B",
+        "shape": "ellipse",
+        "rounded": 0,
+        "fontStyle": 0
+      }
+    },
+    {
+      "id": "review_attr2",
+      "label": "reviewer_id",
+      "type": "user",
+      "bounds": {
+        "x": 1680,
+        "y": 1736,
+        "width": 220,
+        "height": 68
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFFFFF",
+        "strokeColor": "#64748B",
+        "shape": "ellipse",
+        "rounded": 0,
+        "fontStyle": 0
+      }
+    },
+    {
+      "id": "item",
+      "label": "版本样本项\nversion_sample",
+      "type": "service",
+      "bounds": {
+        "x": 2390,
+        "y": 1580,
+        "width": 240,
+        "height": 80
+      },
+      "style": {
+        "fontSize": 19,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B",
+        "shape": "rectangle",
+        "rounded": 0
+      }
+    },
+    {
+      "id": "item_attr0",
+      "label": "id",
+      "type": "user",
+      "bounds": {
+        "x": 2250,
+        "y": 1436,
+        "width": 220,
+        "height": 68
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFFFFF",
+        "strokeColor": "#64748B",
+        "shape": "ellipse",
+        "rounded": 0,
+        "fontStyle": 4
+      }
+    },
+    {
+      "id": "item_attr1",
+      "label": "split",
+      "type": "user",
+      "bounds": {
+        "x": 2550,
+        "y": 1436,
+        "width": 220,
+        "height": 68
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFFFFF",
+        "strokeColor": "#64748B",
+        "shape": "ellipse",
+        "rounded": 0,
+        "fontStyle": 0
+      }
+    },
+    {
+      "id": "item_attr2",
+      "label": "group_id",
+      "type": "user",
+      "bounds": {
+        "x": 2400,
+        "y": 1736,
+        "width": 220,
+        "height": 68
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFFFFF",
+        "strokeColor": "#64748B",
+        "shape": "ellipse",
+        "rounded": 0,
+        "fontStyle": 0
+      }
+    },
+    {
+      "id": "rel_0",
+      "label": "配置",
+      "type": "decision",
+      "bounds": {
+        "x": 634.0,
+        "y": 372,
+        "width": 152,
+        "height": 96
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFF2DB",
+        "strokeColor": "#64748B",
+        "shape": "rhombus",
+        "rounded": 0
+      }
+    },
+    {
+      "id": "rel_1",
+      "label": "采用",
+      "type": "decision",
+      "bounds": {
+        "x": 1354.0,
+        "y": 372,
+        "width": 152,
+        "height": 96
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFF2DB",
+        "strokeColor": "#64748B",
+        "shape": "rhombus",
+        "rounded": 0
+      }
+    },
+    {
+      "id": "rel_2",
+      "label": "分阶段",
+      "type": "decision",
+      "bounds": {
+        "x": 2074.0,
+        "y": 372,
+        "width": 152,
+        "height": 96
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFF2DB",
+        "strokeColor": "#64748B",
+        "shape": "rhombus",
+        "rounded": 0
+      }
+    },
+    {
+      "id": "rel_3",
+      "label": "提供",
+      "type": "decision",
+      "bounds": {
+        "x": 634.0,
+        "y": 972,
+        "width": 152,
+        "height": 96
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFF2DB",
+        "strokeColor": "#64748B",
+        "shape": "rhombus",
+        "rounded": 0
+      }
+    },
+    {
+      "id": "rel_4",
+      "label": "修订",
+      "type": "decision",
+      "bounds": {
+        "x": 1354.0,
+        "y": 972,
+        "width": 152,
+        "height": 96
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFF2DB",
+        "strokeColor": "#64748B",
+        "shape": "rhombus",
+        "rounded": 0
+      }
+    },
+    {
+      "id": "rel_5",
+      "label": "包含",
+      "type": "decision",
+      "bounds": {
+        "x": 2074.0,
+        "y": 972,
+        "width": 152,
+        "height": 96
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFF2DB",
+        "strokeColor": "#64748B",
+        "shape": "rhombus",
+        "rounded": 0
+      }
+    },
+    {
+      "id": "rel_6",
+      "label": "作为图像",
+      "type": "decision",
+      "bounds": {
+        "x": 1354,
+        "y": 1272.0,
+        "width": 152,
+        "height": 96
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFF2DB",
+        "strokeColor": "#64748B",
+        "shape": "rhombus",
+        "rounded": 0
+      }
+    },
+    {
+      "id": "rel_7",
+      "label": "接受审核",
+      "type": "decision",
+      "bounds": {
+        "x": 2074,
+        "y": 1272.0,
+        "width": 152,
+        "height": 96
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFF2DB",
+        "strokeColor": "#64748B",
+        "shape": "rhombus",
+        "rounded": 0
+      }
+    },
+    {
+      "id": "rel_8",
+      "label": "收录",
+      "type": "decision",
+      "bounds": {
+        "x": 1354.0,
+        "y": 1872,
+        "width": 152,
+        "height": 96
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFF2DB",
+        "strokeColor": "#64748B",
+        "shape": "rhombus",
+        "rounded": 0
+      }
+    },
+    {
+      "id": "rel_9",
+      "label": "被引用",
+      "type": "decision",
+      "bounds": {
+        "x": 634,
+        "y": 1342,
+        "width": 152,
+        "height": 96
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFF2DB",
+        "strokeColor": "#64748B",
+        "shape": "rhombus",
+        "rounded": 0
+      }
+    },
+    {
+      "id": "rel_10",
+      "label": "管理来源",
+      "type": "decision",
+      "bounds": {
+        "x": 634,
+        "y": 672.0,
+        "width": 152,
+        "height": 96
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFF2DB",
+        "strokeColor": "#64748B",
+        "shape": "rhombus",
+        "rounded": 0
+      }
+    },
+    {
+      "id": "notation",
+      "label": "Chen标准：矩形=实体；椭圆=属性；菱形=联系；下划线=主键；连线两端标基数（0..N可为零）。\n实体仅展示代表属性，完整字段与全部外键见schema.design.sql；跨图联系见下述映射，不能把外键属性当作联系菱形。",
+      "type": "text",
+      "bounds": {
+        "x": 48,
+        "y": 2080,
+        "width": 2840,
+        "height": 96
+      },
+      "style": {
+        "fontSize": 21,
+        "align": "left",
+        "fontFamily": "Microsoft YaHei"
+      }
+    },
+    {
+      "id": "footer",
+      "label": "补充关系：job→sample/artifact；sample.parent_sample_id→sample；version_sample冻结annotation/review/quality，不读取“最新标签”；每个外键均做项目隔离校验。",
+      "type": "text",
+      "bounds": {
+        "x": 48,
+        "y": 2212,
+        "width": 2840,
+        "height": 112
+      },
+      "style": {
+        "fontSize": 20,
+        "align": "left",
+        "fontFamily": "Microsoft YaHei"
+      }
+    },
+    {
+      "id": "normalization",
+      "label": "本模型UUID实体可独立标识，不强加弱实体双矩形；多值数据已拆表，不强加双椭圆。阶段耗时由起止时间计算，使用虚线椭圆且不入库。",
+      "type": "text",
+      "bounds": {
+        "x": 48,
+        "y": 2356,
+        "width": 2840,
+        "height": 64
+      },
+      "style": {
+        "fontSize": 20,
+        "align": "left",
+        "fontFamily": "Microsoft YaHei"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "to": "project_attr0",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "project"
+    },
+    {
+      "to": "project_attr1",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "project"
+    },
+    {
+      "to": "project_attr2",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "project"
+    },
+    {
+      "to": "scene_attr0",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "scene"
+    },
+    {
+      "to": "scene_attr1",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "scene"
+    },
+    {
+      "to": "scene_attr2",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "scene"
+    },
+    {
+      "to": "job_attr0",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "job"
+    },
+    {
+      "to": "job_attr1",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "job"
+    },
+    {
+      "to": "job_attr2",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "job"
+    },
+    {
+      "to": "stage_attr0",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "stage"
+    },
+    {
+      "to": "stage_attr1",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "stage"
+    },
+    {
+      "to": "stage_attr2",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "stage"
+    },
+    {
+      "to": "stage_elapsed",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "stage"
+    },
+    {
+      "to": "source_attr0",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "source"
+    },
+    {
+      "to": "source_attr1",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "source"
+    },
+    {
+      "to": "source_attr2",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "source"
+    },
+    {
+      "to": "sample_attr0",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "sample"
+    },
+    {
+      "to": "sample_attr1",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "sample"
+    },
+    {
+      "to": "sample_attr2",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "sample"
+    },
+    {
+      "to": "annotation_attr0",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "annotation"
+    },
+    {
+      "to": "annotation_attr1",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "annotation"
+    },
+    {
+      "to": "annotation_attr2",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "annotation"
+    },
+    {
+      "to": "box_attr0",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "box"
+    },
+    {
+      "to": "box_attr1",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "box"
+    },
+    {
+      "to": "box_attr2",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "box"
+    },
+    {
+      "to": "version_attr0",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "version"
+    },
+    {
+      "to": "version_attr1",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "version"
+    },
+    {
+      "to": "version_attr2",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "version"
+    },
+    {
+      "to": "artifact_attr0",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "artifact"
+    },
+    {
+      "to": "artifact_attr1",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "artifact"
+    },
+    {
+      "to": "artifact_attr2",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "artifact"
+    },
+    {
+      "to": "review_attr0",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "review"
+    },
+    {
+      "to": "review_attr1",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "review"
+    },
+    {
+      "to": "review_attr2",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "review"
+    },
+    {
+      "to": "item_attr0",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "item"
+    },
+    {
+      "to": "item_attr1",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "item"
+    },
+    {
+      "to": "item_attr2",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "item"
+    },
+    {
+      "to": "rel_0",
+      "label": "1",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "project"
+    },
+    {
+      "to": "scene",
+      "label": "0..N",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "rel_0"
+    },
+    {
+      "to": "rel_1",
+      "label": "1",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "scene"
+    },
+    {
+      "to": "job",
+      "label": "0..N",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "rel_1"
+    },
+    {
+      "to": "rel_2",
+      "label": "1",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "job"
+    },
+    {
+      "to": "stage",
+      "label": "0..N",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "rel_2"
+    },
+    {
+      "to": "rel_3",
+      "label": "1",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "source"
+    },
+    {
+      "to": "sample",
+      "label": "0..N",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "rel_3"
+    },
+    {
+      "to": "rel_4",
+      "label": "1",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "sample"
+    },
+    {
+      "to": "annotation",
+      "label": "0..N",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "rel_4"
+    },
+    {
+      "to": "rel_5",
+      "label": "1",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "annotation"
+    },
+    {
+      "to": "box",
+      "label": "0..N",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "none",
+        "rounded": 0,
+        "fontSize": 18
+      },
+      "from": "rel_5"
+    },
+    {
+      "to": "rel_6",
+      "label": "1",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "orthogonalEdgeStyle",
+        "rounded": 0,
+        "fontSize": 18,
+        "exitX": 1,
+        "exitY": 0.2,
+        "entryX": 0.5,
+        "entryY": 1
+      },
+      "waypoints": [
+        {
+          "x": 1190,
+          "y": 1550
+        },
+        {
+          "x": 1430,
+          "y": 1550
+        }
+      ],
+      "from": "artifact"
+    },
+    {
+      "to": "sample",
+      "label": "0..N",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "orthogonalEdgeStyle",
+        "rounded": 0,
+        "fontSize": 18,
+        "exitX": 0.5,
+        "exitY": 0,
+        "entryX": 1,
+        "entryY": 0.8
+      },
+      "waypoints": [
+        {
+          "x": 1430,
+          "y": 1090
+        },
+        {
+          "x": 1190,
+          "y": 1090
+        }
+      ],
+      "from": "rel_6"
+    },
+    {
+      "to": "rel_7",
+      "label": "1",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "orthogonalEdgeStyle",
+        "rounded": 0,
+        "fontSize": 18,
+        "exitX": 1,
+        "exitY": 0.8,
+        "entryX": 0.5,
+        "entryY": 0
+      },
+      "waypoints": [
+        {
+          "x": 1910,
+          "y": 1090
+        },
+        {
+          "x": 2150,
+          "y": 1090
+        }
+      ],
+      "from": "annotation"
+    },
+    {
+      "to": "review",
+      "label": "0..N",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "orthogonalEdgeStyle",
+        "rounded": 0,
+        "fontSize": 18,
+        "exitX": 0.5,
+        "exitY": 1,
+        "entryX": 1,
+        "entryY": 0.2
+      },
+      "waypoints": [
+        {
+          "x": 2150,
+          "y": 1550
+        },
+        {
+          "x": 1910,
+          "y": 1550
+        }
+      ],
+      "from": "rel_7"
+    },
+    {
+      "to": "rel_8",
+      "label": "1",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "orthogonalEdgeStyle",
+        "rounded": 0,
+        "fontSize": 18,
+        "exitX": 1,
+        "exitY": 0.8,
+        "entryX": 0,
+        "entryY": 0.5
+      },
+      "waypoints": [
+        {
+          "x": 470,
+          "y": 1690
+        },
+        {
+          "x": 680,
+          "y": 1690
+        },
+        {
+          "x": 680,
+          "y": 1920
+        },
+        {
+          "x": 1354.0,
+          "y": 1920
+        }
+      ],
+      "from": "version"
+    },
+    {
+      "to": "item",
+      "label": "0..N",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "orthogonalEdgeStyle",
+        "rounded": 0,
+        "fontSize": 18,
+        "exitX": 1,
+        "exitY": 0.5,
+        "entryX": 0,
+        "entryY": 0.8
+      },
+      "waypoints": [
+        {
+          "x": 2180,
+          "y": 1920
+        },
+        {
+          "x": 2180,
+          "y": 1690
+        },
+        {
+          "x": 2390,
+          "y": 1690
+        }
+      ],
+      "from": "rel_8"
+    },
+    {
+      "to": "rel_9",
+      "label": "1",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "orthogonalEdgeStyle",
+        "rounded": 0,
+        "fontSize": 18,
+        "exitX": 0,
+        "exitY": 0.8,
+        "entryX": 0.5,
+        "entryY": 0
+      },
+      "waypoints": [
+        {
+          "x": 950,
+          "y": 1090
+        },
+        {
+          "x": 710,
+          "y": 1090
+        }
+      ],
+      "from": "sample"
+    },
+    {
+      "to": "item",
+      "label": "0..N",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "orthogonalEdgeStyle",
+        "rounded": 0,
+        "fontSize": 18,
+        "exitX": 0.5,
+        "exitY": 1,
+        "entryX": 0,
+        "entryY": 0.2
+      },
+      "waypoints": [
+        {
+          "x": 710,
+          "y": 1530
+        },
+        {
+          "x": 2390,
+          "y": 1530
+        }
+      ],
+      "from": "rel_9"
+    },
+    {
+      "to": "rel_10",
+      "label": "1",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "orthogonalEdgeStyle",
+        "rounded": 0,
+        "fontSize": 18,
+        "exitX": 1,
+        "exitY": 0.8,
+        "entryX": 0.5,
+        "entryY": 0
+      },
+      "waypoints": [
+        {
+          "x": 470,
+          "y": 490
+        },
+        {
+          "x": 710,
+          "y": 490
+        }
+      ],
+      "from": "project"
+    },
+    {
+      "to": "source",
+      "label": "0..N",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "startArrow": "none",
+        "edgeStyle": "orthogonalEdgeStyle",
+        "rounded": 0,
+        "fontSize": 18,
+        "exitX": 0.5,
+        "exitY": 1,
+        "entryX": 1,
+        "entryY": 0.2
+      },
+      "waypoints": [
+        {
+          "x": 710,
+          "y": 950
+        },
+        {
+          "x": 470,
+          "y": 950
+        }
+      ],
+      "from": "rel_10"
+    }
+  ]
+}

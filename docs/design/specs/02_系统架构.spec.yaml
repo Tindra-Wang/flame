@@ -1,0 +1,377 @@
+{
+  "meta": {
+    "title": "AI-07 低耦合系统架构（目标态）",
+    "theme": "tech-blue",
+    "profile": "default",
+    "layout": "horizontal",
+    "canvas": "1816x1152",
+    "font": {
+      "primary": "Microsoft YaHei",
+      "cjk": "Microsoft YaHei",
+      "formula": "Microsoft YaHei"
+    }
+  },
+  "nodes": [
+    {
+      "id": "title",
+      "label": "AI-07 低耦合系统架构（目标态）",
+      "type": "text",
+      "bounds": {
+        "x": 48,
+        "y": 24,
+        "width": 1720,
+        "height": 48
+      },
+      "style": {
+        "fontSize": 28,
+        "align": "left",
+        "fontFamily": "Microsoft YaHei"
+      }
+    },
+    {
+      "id": "subtitle",
+      "label": "低成本取舍：一个模块化API＋少量Worker；PG复用为队列，不新增Redis/Celery/K8s",
+      "type": "text",
+      "bounds": {
+        "x": 48,
+        "y": 80,
+        "width": 1720,
+        "height": 48
+      },
+      "style": {
+        "fontSize": 18,
+        "align": "left",
+        "fontFamily": "Microsoft YaHei"
+      }
+    },
+    {
+      "id": "web",
+      "label": "浏览器：Vue3＋TypeScript\n场景/任务/对比/审核/版本/评价\n单一项目权限上下文",
+      "type": "service",
+      "bounds": {
+        "x": 48,
+        "y": 160,
+        "width": 376,
+        "height": 128
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "api",
+      "label": "Nginx TLS → FastAPI 模块化应用\nAuth / Projects / Jobs / Samples\nReview / Versions / Experiments\nOpenAPI + /metrics",
+      "type": "service",
+      "bounds": {
+        "x": 544,
+        "y": 160,
+        "width": 576,
+        "height": 144
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "worker",
+      "label": "本机或按需 GPU Worker\n主动 HTTPS 拉取任务\nlease / heartbeat / timeout\n只通过内部API回传业务状态",
+      "type": "service",
+      "bounds": {
+        "x": 1280,
+        "y": 408,
+        "width": 432,
+        "height": 144
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "pg",
+      "label": "PostgreSQL\n项目元数据＋持久任务队列\n事务 claim / SKIP LOCKED\n单写入边界：平台应用",
+      "type": "database",
+      "bounds": {
+        "x": 48,
+        "y": 440,
+        "width": 376,
+        "height": 144
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "ls",
+      "label": "Label Studio（内部服务）\nAPI 同步真实任务与标签\n平台框编辑 → 受限代理API\n不共享管理员令牌给浏览器",
+      "type": "service",
+      "bounds": {
+        "x": 544,
+        "y": 440,
+        "width": 576,
+        "height": 144
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "store",
+      "label": "Artifact StoragePort\n本地文件卷＋云端已审核产物\n鉴权上传/下载、SHA256、配额\n后续可换 S3，业务不依赖路径",
+      "type": "database",
+      "bounds": {
+        "x": 48,
+        "y": 736,
+        "width": 376,
+        "height": 144
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "dvc",
+      "label": "DVC / Git Adapter\n准备快照 → DVC提交/备份\n核验成功后标记已发布\n失败保持不可见，可对账恢复",
+      "type": "service",
+      "bounds": {
+        "x": 544,
+        "y": 736,
+        "width": 576,
+        "height": 144
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "engines",
+      "label": "隔离引擎与算法适配器\nFDS → Blender → SD\n质检 / COCO-YOLO / FID / 检测\nCPU与GPU并发配额独立",
+      "type": "service",
+      "bounds": {
+        "x": 1280,
+        "y": 736,
+        "width": 432,
+        "height": 144
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#E9F4EE",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "ops",
+      "label": "工程与运维接口：GitHub Actions → 测试≥70% → SonarQube门禁 → 镜像构建/灰度/回滚\nPrometheus＋Grafana告警；Sonar按需运行；独立备份/恢复；成本计量事件；云端CPU Demo接入在线Worker",
+      "type": "service",
+      "bounds": {
+        "x": 48,
+        "y": 976,
+        "width": 1664,
+        "height": 112
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#F1F3F5",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "localnote",
+      "label": "本地/临租计算区",
+      "type": "text",
+      "bounds": {
+        "x": 1280,
+        "y": 336,
+        "width": 432,
+        "height": 48
+      },
+      "style": {
+        "fontSize": 18,
+        "align": "left",
+        "fontFamily": "Microsoft YaHei"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "to": "api",
+      "label": "HTTPS",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 2
+      },
+      "from": "web"
+    },
+    {
+      "to": "pg",
+      "label": "事务",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "exitX": 0,
+        "exitY": 0.65,
+        "entryX": 1,
+        "entryY": 0.5
+      },
+      "from": "api",
+      "waypoints": [
+        {
+          "x": 480,
+          "y": 254
+        },
+        {
+          "x": 480,
+          "y": 512
+        }
+      ]
+    },
+    {
+      "to": "ls",
+      "label": "受限服务账号",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "exitX": 0.5,
+        "exitY": 1,
+        "entryX": 0.5,
+        "entryY": 0
+      },
+      "from": "api"
+    },
+    {
+      "to": "store",
+      "label": "元数据引用",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "exitX": 0.5,
+        "exitY": 1,
+        "entryX": 0.5,
+        "entryY": 0
+      },
+      "from": "pg"
+    },
+    {
+      "to": "dvc",
+      "label": "审核完成事件",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "exitX": 0.5,
+        "exitY": 1,
+        "entryX": 0.5,
+        "entryY": 0
+      },
+      "from": "ls"
+    },
+    {
+      "to": "store",
+      "label": "内容寻址",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "exitX": 0,
+        "exitY": 0.5,
+        "entryX": 1,
+        "entryY": 0.5
+      },
+      "from": "dvc"
+    },
+    {
+      "to": "api",
+      "label": "出站HTTPS",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "exitX": 0,
+        "exitY": 0.1,
+        "entryX": 1,
+        "entryY": 0.6
+      },
+      "from": "worker"
+    },
+    {
+      "to": "engines",
+      "label": "显式 argv＋阶段清单",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "exitX": 0.5,
+        "exitY": 1,
+        "entryX": 0.5,
+        "entryY": 0
+      },
+      "from": "worker"
+    }
+  ]
+}

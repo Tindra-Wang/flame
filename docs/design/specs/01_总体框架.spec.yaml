@@ -1,0 +1,380 @@
+{
+  "meta": {
+    "title": "AI-07 完整功能框架",
+    "theme": "tech-blue",
+    "profile": "default",
+    "layout": "horizontal",
+    "canvas": "1816x1120",
+    "font": {
+      "primary": "Microsoft YaHei",
+      "cjk": "Microsoft YaHei",
+      "formula": "Microsoft YaHei"
+    }
+  },
+  "nodes": [
+    {
+      "id": "title",
+      "label": "AI-07 完整功能框架",
+      "type": "text",
+      "bounds": {
+        "x": 48,
+        "y": 24,
+        "width": 1720,
+        "height": 48
+      },
+      "style": {
+        "fontSize": 28,
+        "align": "left",
+        "fontFamily": "Microsoft YaHei"
+      }
+    },
+    {
+      "id": "subtitle",
+      "label": "指定技术栈全部保留；绿色为已有部分能力，蓝/橙为待完善设计；本图不代表平台已建成",
+      "type": "text",
+      "bounds": {
+        "x": 48,
+        "y": 80,
+        "width": 1720,
+        "height": 48
+      },
+      "style": {
+        "fontSize": 18,
+        "align": "left",
+        "fontFamily": "Microsoft YaHei"
+      }
+    },
+    {
+      "id": "value",
+      "label": "价值：减少危险采集与重复标注\n增加场景多样性；保留真实评价证据",
+      "type": "service",
+      "bounds": {
+        "x": 48,
+        "y": 152,
+        "width": 1712,
+        "height": 80
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#E9F4EE",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "web",
+      "label": "统一 Web 可视化平台（待实现）\n场景配置 / 任务日志 / 原图增强对比 / 标注质检 / DVC版本 / 评价监控",
+      "type": "service",
+      "bounds": {
+        "x": 48,
+        "y": 280,
+        "width": 1712,
+        "height": 96
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "api",
+      "label": "FastAPI 模块化应用：身份与项目隔离、任务编排、审核门禁、发布事务、可追溯性",
+      "type": "service",
+      "bounds": {
+        "x": 48,
+        "y": 424,
+        "width": 1712,
+        "height": 72
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "fds",
+      "label": "FDS\nCFD＋燃烧模型\n物理量、日志、工况",
+      "type": "service",
+      "bounds": {
+        "x": 48,
+        "y": 560,
+        "width": 248,
+        "height": 136
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#E9F4EE",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "blender",
+      "label": "Blender\n多场景/视角/能见度\nRGB＋候选掩膜",
+      "type": "service",
+      "bounds": {
+        "x": 336,
+        "y": 560,
+        "width": 248,
+        "height": 136
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#E9F4EE",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "sd",
+      "label": "Stable Diffusion\n预训练 img2img\n种子/模型哈希/父图",
+      "type": "service",
+      "bounds": {
+        "x": 624,
+        "y": 560,
+        "width": 248,
+        "height": 136
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#E9F4EE",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "ls",
+      "label": "Label Studio\n候选标注＋人工修订\n审核绑定图像/修订",
+      "type": "service",
+      "bounds": {
+        "x": 912,
+        "y": 560,
+        "width": 248,
+        "height": 136
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#E9F4EE",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "qc",
+      "label": "质量筛选\n完整性/重复/框合法性\n视觉人工评价",
+      "type": "service",
+      "bounds": {
+        "x": 1200,
+        "y": 560,
+        "width": 248,
+        "height": 136
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFF2DB",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "dvc",
+      "label": "DVC＋Git\n冻结清单与版本差异\nCOCO/YOLO导出",
+      "type": "service",
+      "bounds": {
+        "x": 1488,
+        "y": 560,
+        "width": 248,
+        "height": 136
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFF2DB",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "eval",
+      "label": "验收证据：真实/合成 FID；相同预算下 YOLO 两组对照；物理量与独立参照误差\n现有样例只证明部分链路可运行，不能证明 5%物理误差或15%检测提升",
+      "type": "service",
+      "bounds": {
+        "x": 48,
+        "y": 768,
+        "width": 1712,
+        "height": 104
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFF2DB",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "eng",
+      "label": "工程实践贯穿全链路：规范化数据管道 / 人工真值 / 同源分组 / 幂等与取消 / 镜像与模型固定\n统一交付：SRS、SDD、测试、OpenAPI、Git Flow、SonarQube、Compose、CI/CD、监控、云Demo、PPT/视频、合规材料",
+      "type": "service",
+      "bounds": {
+        "x": 48,
+        "y": 920,
+        "width": 1712,
+        "height": 112
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#F1F3F5",
+        "strokeColor": "#64748B"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "to": "web",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 2
+      },
+      "from": "value"
+    },
+    {
+      "to": "api",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 2
+      },
+      "from": "web"
+    },
+    {
+      "to": "fds",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "exitX": 0.07242990654205607,
+        "exitY": 1,
+        "entryX": 0.5,
+        "entryY": 0
+      },
+      "from": "api"
+    },
+    {
+      "to": "blender",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 2
+      },
+      "from": "fds"
+    },
+    {
+      "to": "sd",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 2
+      },
+      "from": "blender"
+    },
+    {
+      "to": "ls",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 2
+      },
+      "from": "sd"
+    },
+    {
+      "to": "qc",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 2
+      },
+      "from": "ls"
+    },
+    {
+      "to": "dvc",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 2
+      },
+      "from": "qc"
+    },
+    {
+      "to": "eval",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "exitX": 0.5,
+        "exitY": 1,
+        "entryX": 0.9135514018691588,
+        "entryY": 0
+      },
+      "from": "dvc"
+    }
+  ]
+}

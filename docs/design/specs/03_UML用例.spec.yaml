@@ -1,0 +1,442 @@
+{
+  "meta": {
+    "title": "UML 用例图",
+    "theme": "tech-blue",
+    "profile": "default",
+    "layout": "horizontal",
+    "canvas": "1816x1120",
+    "font": {
+      "primary": "Microsoft YaHei",
+      "cjk": "Microsoft YaHei",
+      "formula": "Microsoft YaHei"
+    }
+  },
+  "nodes": [
+    {
+      "id": "title",
+      "label": "UML 用例图",
+      "type": "text",
+      "bounds": {
+        "x": 48,
+        "y": 24,
+        "width": 1720,
+        "height": 48
+      },
+      "style": {
+        "fontSize": 28,
+        "align": "left",
+        "fontFamily": "Microsoft YaHei"
+      }
+    },
+    {
+      "id": "subtitle",
+      "label": "角色可以由同一成员承担；平台原生框编辑与LS API同步属于同一审核用例",
+      "type": "text",
+      "bounds": {
+        "x": 48,
+        "y": 80,
+        "width": 1720,
+        "height": 48
+      },
+      "style": {
+        "fontSize": 18,
+        "align": "left",
+        "fontFamily": "Microsoft YaHei"
+      }
+    },
+    {
+      "id": "builder",
+      "label": "«actor»\n数据构建人员",
+      "type": "user",
+      "bounds": {
+        "x": 48,
+        "y": 456,
+        "width": 224,
+        "height": 120
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#F1F3F5",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "reviewer",
+      "label": "«actor»\n审核/评价人员",
+      "type": "user",
+      "bounds": {
+        "x": 1456,
+        "y": 280,
+        "width": 224,
+        "height": 120
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#F1F3F5",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "admin",
+      "label": "«actor»\n管理员",
+      "type": "user",
+      "bounds": {
+        "x": 1456,
+        "y": 704,
+        "width": 224,
+        "height": 120
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#F1F3F5",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "scene",
+      "label": "配置工况/视角/天气",
+      "type": "user",
+      "bounds": {
+        "x": 400,
+        "y": 176,
+        "width": 256,
+        "height": 104
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "jobs",
+      "label": "提交/取消/重试任务",
+      "type": "user",
+      "bounds": {
+        "x": 400,
+        "y": 384,
+        "width": 256,
+        "height": 104
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "compare",
+      "label": "原图增强对比与检索",
+      "type": "user",
+      "bounds": {
+        "x": 400,
+        "y": 592,
+        "width": 256,
+        "height": 104
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "review",
+      "label": "修订标签与审核质检",
+      "type": "user",
+      "bounds": {
+        "x": 1040,
+        "y": 176,
+        "width": 256,
+        "height": 104
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "version",
+      "label": "冻结DVC版本与导出",
+      "type": "user",
+      "bounds": {
+        "x": 400,
+        "y": 800,
+        "width": 256,
+        "height": 104
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "evaluate",
+      "label": "物理/FID/检测评价",
+      "type": "user",
+      "bounds": {
+        "x": 1040,
+        "y": 384,
+        "width": 256,
+        "height": 104
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "auth",
+      "label": "账户与项目授权",
+      "type": "user",
+      "bounds": {
+        "x": 1040,
+        "y": 592,
+        "width": 256,
+        "height": 104
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "ops",
+      "label": "监控/配额/审计/恢复",
+      "type": "user",
+      "bounds": {
+        "x": 1040,
+        "y": 800,
+        "width": 256,
+        "height": 104
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "gate",
+      "label": "检查审核/质量门禁",
+      "type": "user",
+      "bounds": {
+        "x": 752,
+        "y": 800,
+        "width": 240,
+        "height": 104
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFF2DB",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "note",
+      "label": "全部用例先校验项目权限；发布引用人工审核修订；评价需要独立真实数据；管理员不能绕过数据发布质量门禁",
+      "type": "text",
+      "bounds": {
+        "x": 48,
+        "y": 1000,
+        "width": 1664,
+        "height": 48
+      },
+      "style": {
+        "fontSize": 18,
+        "align": "left",
+        "fontFamily": "Microsoft YaHei"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "to": "scene",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "exitX": 1,
+        "exitY": 0.5,
+        "entryX": 0,
+        "entryY": 0.5
+      },
+      "from": "builder"
+    },
+    {
+      "to": "jobs",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "exitX": 1,
+        "exitY": 0.5,
+        "entryX": 0,
+        "entryY": 0.5
+      },
+      "from": "builder"
+    },
+    {
+      "to": "compare",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "exitX": 1,
+        "exitY": 0.5,
+        "entryX": 0,
+        "entryY": 0.5
+      },
+      "from": "builder"
+    },
+    {
+      "to": "version",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "exitX": 1,
+        "exitY": 0.5,
+        "entryX": 0,
+        "entryY": 0.5
+      },
+      "from": "builder"
+    },
+    {
+      "to": "review",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "exitX": 0,
+        "exitY": 0.5,
+        "entryX": 1,
+        "entryY": 0.5
+      },
+      "from": "reviewer"
+    },
+    {
+      "to": "evaluate",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "exitX": 0,
+        "exitY": 0.5,
+        "entryX": 1,
+        "entryY": 0.5
+      },
+      "from": "reviewer"
+    },
+    {
+      "to": "auth",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "exitX": 0,
+        "exitY": 0.5,
+        "entryX": 1,
+        "entryY": 0.5
+      },
+      "from": "admin"
+    },
+    {
+      "to": "ops",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "none",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "exitX": 0,
+        "exitY": 0.5,
+        "entryX": 1,
+        "entryY": 0.5
+      },
+      "from": "admin"
+    },
+    {
+      "to": "gate",
+      "label": "«include»",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "dashed": 1,
+        "exitX": 1,
+        "exitY": 0.5,
+        "entryX": 0,
+        "entryY": 0.5
+      },
+      "from": "version"
+    }
+  ]
+}

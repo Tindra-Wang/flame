@@ -1,0 +1,5 @@
+ARG BASE_IMAGE=ai07-modeling:cpu
+FROM ${BASE_IMAGE}
+# Local code-only refresh. Clean machines build the engine-specific Dockerfiles.
+COPY fire_modeling /app/fire_modeling
+COPY integrations/firephantom/firephantom /app/integrations/firephantom/firephantom

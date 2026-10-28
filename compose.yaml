@@ -1,0 +1,79 @@
+name: ai07-modeling
+x-files: &files
+  - ./configs:/app/configs:ro
+  - ./artifacts:/app/artifacts
+  - ./models:/app/models:ro
+services:
+  assets:
+    profiles: [setup]
+    image: python:3.12-slim-trixie@sha256:a6e34c598f2467ed0e9a8d349809fcd8b5c603269512df273a0bb1784edc11b1
+    working_dir: /app
+    volumes:
+      - ./scripts:/app/scripts:ro
+      - ./models:/app/models
+      - ./engines:/app/engines
+      - ./artifacts:/app/artifacts
+    entrypoint: [python, -u, /app/scripts/download-assets.py]
+    command: [--only, all]
+  modeling:
+    build: .
+    image: ai07-modeling:cpu
+    volumes: *files
+    command: [doctor]
+  physics:
+    profiles: [pipeline]
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.fds
+    image: ai07-modeling:fds
+    volumes: *files
+    entrypoint: [python, -m, fire_modeling.workflow]
+    command: [simulate]
+  blender:
+    profiles: [pipeline, render]
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.blender
+    image: ai07-modeling:blender
+    volumes: *files
+    environment:
+      OMP_NUM_THREADS: '2'
+    entrypoint: [python, -m, fire_modeling.workflow]
+    command: [render]
+  gpu:
+    profiles: [pipeline, gpu]
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.gpu
+    image: ai07-modeling:gpu
+    gpus: all
+    shm_size: 1gb
+    environment:
+      HF_HUB_OFFLINE: '1'
+      HF_HOME: /app/artifacts/hf-cache
+      TORCH_HOME: /app/artifacts/torch-cache
+      YOLO_CONFIG_DIR: /app/artifacts/yolo-settings
+    volumes: *files
+    command: [doctor]
+  enhance:
+    profiles: [pipeline]
+    image: ai07-modeling:gpu
+    gpus: all
+    environment:
+      HF_HUB_OFFLINE: '1'
+    volumes: *files
+    entrypoint: [python, -m, fire_modeling.workflow]
+    command: [enhance]
+  annotation:
+    profiles: [annotation]
+    image: heartexlabs/label-studio:1.22.0
+    ports: ['127.0.0.1:8080:8080']
+    environment:
+      LABEL_STUDIO_LOCAL_FILES_SERVING_ENABLED: 'true'
+      LABEL_STUDIO_LOCAL_FILES_DOCUMENT_ROOT: /data/artifacts
+    volumes:
+      - ./artifacts:/data/artifacts:ro
+      - label-studio-data:/label-studio/data
+    restart: unless-stopped
+volumes:
+  label-studio-data:

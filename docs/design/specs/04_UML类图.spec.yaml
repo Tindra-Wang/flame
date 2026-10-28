@@ -1,0 +1,487 @@
+{
+  "meta": {
+    "title": "UML 设计类图与端口边界",
+    "theme": "tech-blue",
+    "profile": "default",
+    "layout": "horizontal",
+    "canvas": "1816x1120",
+    "font": {
+      "primary": "Microsoft YaHei",
+      "cjk": "Microsoft YaHei",
+      "formula": "Microsoft YaHei"
+    }
+  },
+  "nodes": [
+    {
+      "id": "title",
+      "label": "UML 设计类图与端口边界",
+      "type": "text",
+      "bounds": {
+        "x": 48,
+        "y": 24,
+        "width": 1720,
+        "height": 48
+      },
+      "style": {
+        "fontSize": 28,
+        "align": "left",
+        "fontFamily": "Microsoft YaHei"
+      }
+    },
+    {
+      "id": "subtitle",
+      "label": "类图表示目标设计接口；现有 Renderer、文件契约和算法函数可适配复用",
+      "type": "text",
+      "bounds": {
+        "x": 48,
+        "y": 80,
+        "width": 1720,
+        "height": 48
+      },
+      "style": {
+        "fontSize": 18,
+        "align": "left",
+        "fontFamily": "Microsoft YaHei"
+      }
+    },
+    {
+      "id": "controller",
+      "label": "ApplicationService\n────────────\nsubmitJob / reviewSample\npublishVersion / runExperiment",
+      "type": "service",
+      "bounds": {
+        "x": 48,
+        "y": 176,
+        "width": 328,
+        "height": 168
+      },
+      "style": {
+        "fontSize": 16,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "jobs",
+      "label": "JobOrchestrator\n────────────\nclaimLease / heartbeat\nretry / cancel / checkpoint",
+      "type": "service",
+      "bounds": {
+        "x": 464,
+        "y": 176,
+        "width": 328,
+        "height": 168
+      },
+      "style": {
+        "fontSize": 16,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "engine",
+      "label": "«interface» EnginePort\n────────────\nprepare(config)\nexecute(context) → StageResult",
+      "type": "service",
+      "bounds": {
+        "x": 880,
+        "y": 176,
+        "width": 328,
+        "height": 168
+      },
+      "style": {
+        "fontSize": 16,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFF2DB",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "fds",
+      "label": "FdsAdapter / BlenderAdapter\n────────────\n参数校验 / 子进程超时\n文件清单与物理代理说明",
+      "type": "service",
+      "bounds": {
+        "x": 1296,
+        "y": 176,
+        "width": 328,
+        "height": 168
+      },
+      "style": {
+        "fontSize": 16,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#E9F4EE",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "review",
+      "label": "ReviewService\n────────────\nimageSHA + annotationRevision\n人工修订 / 冲突检测",
+      "type": "service",
+      "bounds": {
+        "x": 48,
+        "y": 464,
+        "width": 328,
+        "height": 168
+      },
+      "style": {
+        "fontSize": 16,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "label",
+      "label": "«interface» LabelPort\n────────────\ncreateTask / importRevision\nWebhook去重/项目校验",
+      "type": "service",
+      "bounds": {
+        "x": 464,
+        "y": 464,
+        "width": 328,
+        "height": 168
+      },
+      "style": {
+        "fontSize": 16,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFF2DB",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "version",
+      "label": "VersionService\n────────────\n冻结审核标签与分组\nprepare / commit / publish",
+      "type": "service",
+      "bounds": {
+        "x": 880,
+        "y": 464,
+        "width": 328,
+        "height": 168
+      },
+      "style": {
+        "fontSize": 16,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "dvc",
+      "label": "«interface» VersionPort\n────────────\nDvcAdapter.prepare/push/verify\nGit SHA＋manifest SHA",
+      "type": "service",
+      "bounds": {
+        "x": 1296,
+        "y": 464,
+        "width": 328,
+        "height": 168
+      },
+      "style": {
+        "fontSize": 16,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFF2DB",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "storage",
+      "label": "«interface» StoragePort\n────────────\nput / get / signedDownload\nLocalVolume → SSH/S3",
+      "type": "service",
+      "bounds": {
+        "x": 48,
+        "y": 752,
+        "width": 328,
+        "height": 168
+      },
+      "style": {
+        "fontSize": 16,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFF2DB",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "repo",
+      "label": "Repository / UnitOfWork\n────────────\n项目隔离 / 乐观锁\nPG事务 / Outbox",
+      "type": "service",
+      "bounds": {
+        "x": 464,
+        "y": 752,
+        "width": 328,
+        "height": 168
+      },
+      "style": {
+        "fontSize": 16,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFF2DB",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "eval",
+      "label": "EvaluationService\n────────────\nFID / 物理误差 / YOLO对照\n版本、预算与参照快照",
+      "type": "service",
+      "bounds": {
+        "x": 880,
+        "y": 752,
+        "width": 328,
+        "height": 168
+      },
+      "style": {
+        "fontSize": 16,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "diff",
+      "label": "Diffusion / Detection Adapter\n────────────\nSD1.5 / YOLO11n\n模型哈希、种子与真实结果",
+      "type": "service",
+      "bounds": {
+        "x": 1296,
+        "y": 752,
+        "width": 328,
+        "height": 168
+      },
+      "style": {
+        "fontSize": 16,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#E9F4EE",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "note",
+      "label": "业务层不导入 bpy/torch；第三方调用只在适配器；Worker不直接写平台PG；重试复用已验证产物，审核/发布事务禁止静默降级",
+      "type": "text",
+      "bounds": {
+        "x": 48,
+        "y": 992,
+        "width": 1664,
+        "height": 64
+      },
+      "style": {
+        "fontSize": 18,
+        "align": "left",
+        "fontFamily": "Microsoft YaHei"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "to": "jobs",
+      "label": "调用",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 2
+      },
+      "from": "controller"
+    },
+    {
+      "to": "engine",
+      "label": "依赖端口",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 2
+      },
+      "from": "jobs"
+    },
+    {
+      "to": "engine",
+      "label": "实现",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "block",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "endFill": 0,
+        "dashed": 1
+      },
+      "from": "fds"
+    },
+    {
+      "to": "label",
+      "label": "依赖端口",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 2
+      },
+      "from": "review"
+    },
+    {
+      "to": "dvc",
+      "label": "依赖端口",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 2
+      },
+      "from": "version"
+    },
+    {
+      "to": "review",
+      "label": "调用",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "exitX": 0.5,
+        "exitY": 1,
+        "entryX": 0.5,
+        "entryY": 0
+      },
+      "from": "controller"
+    },
+    {
+      "to": "storage",
+      "label": "读图像",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "exitX": 0.5,
+        "exitY": 1,
+        "entryX": 0.5,
+        "entryY": 0
+      },
+      "from": "review"
+    },
+    {
+      "to": "repo",
+      "label": "持久状态",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "exitX": 1,
+        "exitY": 0.5,
+        "entryX": 0.5,
+        "entryY": 0
+      },
+      "from": "jobs",
+      "waypoints": [
+        {
+          "x": 824,
+          "y": 260
+        },
+        {
+          "x": 824,
+          "y": 720
+        },
+        {
+          "x": 628,
+          "y": 720
+        }
+      ]
+    },
+    {
+      "to": "eval",
+      "label": "版本快照",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "exitX": 0.5,
+        "exitY": 1,
+        "entryX": 0.5,
+        "entryY": 0
+      },
+      "from": "version"
+    },
+    {
+      "to": "diff",
+      "label": "执行",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 2
+      },
+      "from": "eval"
+    },
+    {
+      "to": "engine",
+      "label": "实现",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "block",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "endFill": 0,
+        "dashed": 1,
+        "exitX": 1,
+        "exitY": 0.5,
+        "entryX": 0.5,
+        "entryY": 0
+      },
+      "from": "diff",
+      "waypoints": [
+        {
+          "x": 1744,
+          "y": 960
+        },
+        {
+          "x": 1744,
+          "y": 136
+        },
+        {
+          "x": 1044,
+          "y": 136
+        }
+      ]
+    }
+  ]
+}

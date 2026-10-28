@@ -1,0 +1,13 @@
+groups:
+  - name: ai07
+    rules:
+      - alert: AI07ApiDown
+        expr: up{job="ai07"} == 0
+        for: 1m
+        labels: {severity: critical}
+        annotations: {summary: AI-07 API has been unavailable for one minute}
+      - alert: AI07TaskFailures
+        expr: ai07_jobs{status="failed"} > 0
+        for: 1m
+        labels: {severity: warning}
+        annotations: {summary: AI-07 has failed tasks requiring review}

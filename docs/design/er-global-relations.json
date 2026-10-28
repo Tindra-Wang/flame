@@ -1,0 +1,313 @@
+{
+  "entities": [
+    {
+      "id": "user",
+      "table": "user_account"
+    },
+    {
+      "id": "member",
+      "table": "project_member"
+    },
+    {
+      "id": "project",
+      "table": "project"
+    },
+    {
+      "id": "scene",
+      "table": "scene_config"
+    },
+    {
+      "id": "job",
+      "table": "job"
+    },
+    {
+      "id": "audit",
+      "table": "audit_event"
+    },
+    {
+      "id": "worker",
+      "table": "worker_node"
+    },
+    {
+      "id": "source",
+      "table": "source_record"
+    },
+    {
+      "id": "artifact",
+      "table": "artifact"
+    },
+    {
+      "id": "stage",
+      "table": "job_stage"
+    },
+    {
+      "id": "model",
+      "table": "model_asset"
+    },
+    {
+      "id": "experiment",
+      "table": "experiment"
+    },
+    {
+      "id": "sample",
+      "table": "sample"
+    },
+    {
+      "id": "annotation",
+      "table": "annotation_revision"
+    },
+    {
+      "id": "box",
+      "table": "label_box"
+    },
+    {
+      "id": "budget",
+      "table": "budget_usage"
+    },
+    {
+      "id": "arm",
+      "table": "experiment_arm"
+    },
+    {
+      "id": "quality",
+      "table": "quality_result"
+    },
+    {
+      "id": "review",
+      "table": "review_decision"
+    },
+    {
+      "id": "evidence",
+      "table": "delivery_evidence"
+    },
+    {
+      "id": "metric",
+      "table": "metric_result"
+    },
+    {
+      "id": "version",
+      "table": "dataset_version"
+    },
+    {
+      "id": "item",
+      "table": "version_sample"
+    },
+    {
+      "id": "export",
+      "table": "export_record"
+    }
+  ],
+  "relations": [
+    [
+      "user",
+      "member",
+      "加入",
+      "1",
+      "0..N"
+    ],
+    [
+      "project",
+      "member",
+      "设成员",
+      "1",
+      "0..N"
+    ],
+    [
+      "project",
+      "scene",
+      "配置",
+      "1",
+      "0..N"
+    ],
+    [
+      "scene",
+      "job",
+      "采用",
+      "0..1",
+      "0..N"
+    ],
+    [
+      "user",
+      "audit",
+      "执行操作",
+      "0..1",
+      "0..N"
+    ],
+    [
+      "user",
+      "worker",
+      "认证节点",
+      "1",
+      "0..N"
+    ],
+    [
+      "project",
+      "source",
+      "管理来源",
+      "1",
+      "0..N"
+    ],
+    [
+      "job",
+      "stage",
+      "分阶段",
+      "1",
+      "0..N"
+    ],
+    [
+      "job",
+      "artifact",
+      "产生文件",
+      "0..1",
+      "0..N"
+    ],
+    [
+      "source",
+      "sample",
+      "提供",
+      "1",
+      "0..N"
+    ],
+    [
+      "source",
+      "model",
+      "授权模型",
+      "1",
+      "0..N"
+    ],
+    [
+      "model",
+      "experiment",
+      "用于评价",
+      "0..1",
+      "0..N"
+    ],
+    [
+      "experiment",
+      "arm",
+      "设置",
+      "1",
+      "0..N"
+    ],
+    [
+      "sample",
+      "annotation",
+      "修订",
+      "1",
+      "0..N"
+    ],
+    [
+      "annotation",
+      "box",
+      "包含",
+      "1",
+      "0..N"
+    ],
+    [
+      "annotation",
+      "review",
+      "接受审核",
+      "1",
+      "0..N"
+    ],
+    [
+      "sample",
+      "quality",
+      "质量检查",
+      "1",
+      "0..N"
+    ],
+    [
+      "quality",
+      "item",
+      "质量证据",
+      "1",
+      "0..N"
+    ],
+    [
+      "review",
+      "item",
+      "审核证据",
+      "1",
+      "0..N"
+    ],
+    [
+      "version",
+      "item",
+      "收录",
+      "1",
+      "0..N"
+    ],
+    [
+      "sample",
+      "item",
+      "冻结样本",
+      "1",
+      "0..N"
+    ],
+    [
+      "annotation",
+      "item",
+      "冻结标签",
+      "1",
+      "0..N"
+    ],
+    [
+      "version",
+      "arm",
+      "训练集",
+      "0..1",
+      "0..N"
+    ],
+    [
+      "arm",
+      "metric",
+      "产生指标",
+      "0..1",
+      "0..N"
+    ],
+    [
+      "artifact",
+      "evidence",
+      "交付证据",
+      "1",
+      "0..N"
+    ],
+    [
+      "version",
+      "export",
+      "导出",
+      "1",
+      "0..N"
+    ],
+    [
+      "job",
+      "budget",
+      "资源计量",
+      "0..1",
+      "0..N"
+    ],
+    [
+      "project",
+      "budget",
+      "归属成本",
+      "1",
+      "0..N"
+    ],
+    [
+      "job",
+      "sample",
+      "生成样本",
+      "0..1",
+      "0..N"
+    ],
+    [
+      "artifact",
+      "sample",
+      "图像文件",
+      "1",
+      "0..N"
+    ]
+  ],
+  "connected_entity_count": 24
+}

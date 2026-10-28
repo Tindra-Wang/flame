@@ -1,0 +1,14 @@
+FROM pytorch/pytorch:2.7.1-cuda12.8-cudnn9-runtime@sha256:c16f4c749e2d9e96878875cdf6cc45cddda1d1a36fddd371dd6f2360f1b6e2a2
+ARG PIP_INDEX_URL=https://pypi.org/simple
+ENV PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 HF_HUB_OFFLINE=1 PIP_DEFAULT_TIMEOUT=180 PIP_RETRIES=8 PIP_DISABLE_PIP_VERSION_CHECK=1
+WORKDIR /app
+RUN apt-get update && apt-get install -y --no-install-recommends libgl1 libglib2.0-0 && rm -rf /var/lib/apt/lists/*
+COPY docker/requirements-gpu.txt docker/constraints-gpu.txt /app/
+RUN --mount=type=cache,target=/root/.cache/pip pip install -c constraints-gpu.txt -r requirements-gpu.txt
+COPY pyproject.toml /app/
+COPY fire_modeling /app/fire_modeling
+COPY integrations/firephantom/firephantom /app/integrations/firephantom/firephantom
+RUN pip install --no-cache-dir --no-deps .
+COPY configs /app/configs
+ENTRYPOINT ["python", "-m", "fire_modeling"]
+CMD ["doctor"]

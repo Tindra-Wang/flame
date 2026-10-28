@@ -1,0 +1,14 @@
+FROM ai07-modeling:cpu
+ARG DEBIAN_MIRROR=deb.debian.org
+RUN sed -i "s|http://deb.debian.org|https://${DEBIAN_MIRROR}|g" /etc/apt/sources.list.d/debian.sources \
+ && apt-get -o Acquire::Retries=3 update \
+ && apt-get -o Acquire::Retries=3 install -y --no-install-recommends xz-utils libx11-6 libxi6 libxxf86vm1 libxfixes3 libxrender1 libsm6 libgl1 libegl1 libgomp1 libxkbcommon0 \
+ && rm -rf /var/lib/apt/lists/*
+COPY engines/downloads/blender.tar.xz /tmp/blender.tar.xz
+RUN echo '975c58fcb244273838534bba771e64ad87739216b0f9b39a888531a49a72d845  /tmp/blender.tar.xz' | sha256sum -c - \
+ && mkdir -p /opt/blender \
+ && tar -xJf /tmp/blender.tar.xz --strip-components=1 -C /opt/blender \
+ && rm /tmp/blender.tar.xz \
+ && ln -s /opt/blender/blender /usr/local/bin/blender
+COPY fire_modeling /app/fire_modeling
+COPY integrations/firephantom/firephantom /app/integrations/firephantom/firephantom

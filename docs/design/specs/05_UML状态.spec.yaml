@@ -1,0 +1,457 @@
+{
+  "meta": {
+    "title": "UML 任务与数据发布状态机",
+    "theme": "tech-blue",
+    "profile": "default",
+    "layout": "horizontal",
+    "canvas": "1816x1120",
+    "font": {
+      "primary": "Microsoft YaHei",
+      "cjk": "Microsoft YaHei",
+      "formula": "Microsoft YaHei"
+    }
+  },
+  "nodes": [
+    {
+      "id": "title",
+      "label": "UML 任务与数据发布状态机",
+      "type": "text",
+      "bounds": {
+        "x": 48,
+        "y": 24,
+        "width": 1720,
+        "height": 48
+      },
+      "style": {
+        "fontSize": 28,
+        "align": "left",
+        "fontFamily": "Microsoft YaHei"
+      }
+    },
+    {
+      "id": "subtitle",
+      "label": "不可把完成推理、生成候选框、人工审核、版本发布混成同一个“成功”",
+      "type": "text",
+      "bounds": {
+        "x": 48,
+        "y": 80,
+        "width": 1720,
+        "height": 48
+      },
+      "style": {
+        "fontSize": 18,
+        "align": "left",
+        "fontFamily": "Microsoft YaHei"
+      }
+    },
+    {
+      "id": "queued",
+      "label": "queued\n幂等提交＋配额校验",
+      "type": "service",
+      "bounds": {
+        "x": 48,
+        "y": 240,
+        "width": 240,
+        "height": 104
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "running",
+      "label": "running\nlease＋心跳＋检查点",
+      "type": "service",
+      "bounds": {
+        "x": 400,
+        "y": 240,
+        "width": 272,
+        "height": 104
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "done",
+      "label": "succeeded\n产物完整并校验通过",
+      "type": "service",
+      "bounds": {
+        "x": 832,
+        "y": 240,
+        "width": 272,
+        "height": 104
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#E9F4EE",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "retry",
+      "label": "retry_wait\n有限次数＋指数退避",
+      "type": "service",
+      "bounds": {
+        "x": 400,
+        "y": 464,
+        "width": 272,
+        "height": 104
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFF2DB",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "failed",
+      "label": "failed\n留存日志/阶段/预算",
+      "type": "service",
+      "bounds": {
+        "x": 832,
+        "y": 464,
+        "width": 272,
+        "height": 104
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FCEBEB",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "cancel",
+      "label": "cancel_requested\n停止派发＋终止子进程",
+      "type": "service",
+      "bounds": {
+        "x": 1248,
+        "y": 240,
+        "width": 376,
+        "height": 104
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFF2DB",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "cancelled",
+      "label": "cancelled\n保留已完成产物",
+      "type": "service",
+      "bounds": {
+        "x": 1248,
+        "y": 464,
+        "width": 376,
+        "height": 104
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#F1F3F5",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "candidate",
+      "label": "candidate\n未审核样本",
+      "type": "service",
+      "bounds": {
+        "x": 48,
+        "y": 752,
+        "width": 272,
+        "height": 104
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "reviewed",
+      "label": "reviewed\n绑定图像SHA和标签修订",
+      "type": "service",
+      "bounds": {
+        "x": 448,
+        "y": 752,
+        "width": 328,
+        "height": 104
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "staging",
+      "label": "dvc_pending\n冻结清单＋DVC备份核验",
+      "type": "service",
+      "bounds": {
+        "x": 904,
+        "y": 752,
+        "width": 328,
+        "height": 104
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FFF2DB",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "published",
+      "label": "published\n不可变旧版本",
+      "type": "service",
+      "bounds": {
+        "x": 1360,
+        "y": 752,
+        "width": 328,
+        "height": 104
+      },
+      "style": {
+        "fontSize": 18,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#E9F4EE",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "joblabel",
+      "label": "任务状态（执行成功不代表数据已审核）",
+      "type": "text",
+      "bounds": {
+        "x": 48,
+        "y": 152,
+        "width": 1300,
+        "height": 48
+      },
+      "style": {
+        "fontSize": 22,
+        "align": "left",
+        "fontFamily": "Microsoft YaHei"
+      }
+    },
+    {
+      "id": "datalabel",
+      "label": "样本/版本状态（与任务状态独立）",
+      "type": "text",
+      "bounds": {
+        "x": 48,
+        "y": 656,
+        "width": 1400,
+        "height": 48
+      },
+      "style": {
+        "fontSize": 22,
+        "align": "left",
+        "fontFamily": "Microsoft YaHei"
+      }
+    },
+    {
+      "id": "note",
+      "label": "增强生成新样本，状态重新为candidate；修改标签生成新修订，旧版本不变；DVC失败停留不可见暂存态并告警；迟到心跳必须核验lease代次",
+      "type": "text",
+      "bounds": {
+        "x": 48,
+        "y": 968,
+        "width": 1664,
+        "height": 80
+      },
+      "style": {
+        "fontSize": 18,
+        "align": "left",
+        "fontFamily": "Microsoft YaHei"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "to": "running",
+      "label": "claim",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 2
+      },
+      "from": "queued"
+    },
+    {
+      "to": "done",
+      "label": "全部阶段成功",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 2
+      },
+      "from": "running"
+    },
+    {
+      "to": "retry",
+      "label": "可重试错误",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "exitX": 0.5,
+        "exitY": 1,
+        "entryX": 0.5,
+        "entryY": 0
+      },
+      "from": "running"
+    },
+    {
+      "to": "running",
+      "label": "重新入队",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "exitX": 0,
+        "exitY": 0.5,
+        "entryX": 0,
+        "entryY": 0.7
+      },
+      "from": "retry"
+    },
+    {
+      "to": "failed",
+      "label": "耗尽/不可恢复",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 2
+      },
+      "from": "retry"
+    },
+    {
+      "to": "cancel",
+      "label": "取消请求",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 2,
+        "exitX": 0.7,
+        "exitY": 0,
+        "entryX": 0.5,
+        "entryY": 0
+      },
+      "from": "running",
+      "waypoints": [
+        {
+          "x": 590,
+          "y": 208
+        },
+        {
+          "x": 1436,
+          "y": 208
+        }
+      ]
+    },
+    {
+      "to": "cancelled",
+      "label": "确认进程退出",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 2
+      },
+      "from": "cancel"
+    },
+    {
+      "to": "reviewed",
+      "label": "人工审核",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 2
+      },
+      "from": "candidate"
+    },
+    {
+      "to": "staging",
+      "label": "质检＋授权＋分组通过",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 2
+      },
+      "from": "reviewed"
+    },
+    {
+      "to": "published",
+      "label": "DVC提交/备份成功",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 2
+      },
+      "from": "staging"
+    }
+  ]
+}

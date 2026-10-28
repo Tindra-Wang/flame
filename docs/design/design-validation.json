@@ -1,0 +1,157 @@
+{
+  "date": "2026-10-18",
+  "kind": "design_artifact_validation_not_software_acceptance",
+  "pages": [
+    {
+      "page": "01_总体框架",
+      "png_size": [
+        5431,
+        3205
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "editable_cells": 24
+    },
+    {
+      "page": "02_系统架构",
+      "png_size": [
+        5431,
+        3380
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "editable_cells": 30
+    },
+    {
+      "page": "03_UML用例",
+      "png_size": [
+        5431,
+        3252
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "editable_cells": 27
+    },
+    {
+      "page": "04_UML类图",
+      "png_size": [
+        5431,
+        3277
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "editable_cells": 39
+    },
+    {
+      "page": "05_UML状态",
+      "png_size": [
+        5431,
+        3252
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "editable_cells": 38
+    },
+    {
+      "page": "06_ER核心数据",
+      "png_size": [
+        9252,
+        7540
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "editable_cells": 148
+    },
+    {
+      "page": "07_ER治理评价",
+      "png_size": [
+        9252,
+        9040
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "editable_cells": 145
+    },
+    {
+      "page": "08_PERT网络",
+      "png_size": [
+        9456,
+        5202
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "editable_cells": 48
+    },
+    {
+      "page": "09_成本与资源",
+      "png_size": [
+        9456,
+        5402
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "editable_cells": 48
+    },
+    {
+      "page": "10_ER全局联系",
+      "png_size": [
+        5904,
+        4744
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "editable_cells": 228
+    }
+  ],
+  "team": 5,
+  "roles": {
+    "PM": "产品经理",
+    "AR": "架构师",
+    "DEV": "开发工程师",
+    "QA": "测试师",
+    "OPS": "运维师"
+  },
+  "logical_workdays": 44,
+  "resource_workdays": 56,
+  "project_buffer": 9,
+  "commitment_workdays": 65,
+  "remaining_labor_hours": 381,
+  "pricing_status": "unpriced",
+  "cash_budget_assumption": null,
+  "economic_budget_assumption": null,
+  "global_er_entities": 24,
+  "global_er_relationships": 30,
+  "global_er_connected": true,
+  "ddl_tables": 24,
+  "openapi_paths": 30,
+  "notes": [
+    "XML graph references and PNG structure verified",
+    "Chen rectangles/ellipses/diamonds/underlined keys and arrowless relationships verified",
+    "All 17 task costs use symbolic formulas; rates and currency amounts are unset",
+    "Ten exported pages visually inspected; global ER export scale reduced to correct clipping",
+    "Some bound-edge/waypoint routing heuristics remain warnings; intentional forks and ordinary crossings are not dependency nodes",
+    "DDL is a proposed schema; not applied to PostgreSQL",
+    "OpenAPI is a proposed contract; HTTP endpoints not implemented",
+    "SRS unchanged; this does not certify algorithm metrics or full product acceptance"
+  ]
+}

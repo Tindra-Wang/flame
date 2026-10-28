@@ -1,0 +1,39 @@
+# Add to the existing Compose files; separate accounts/database/data, shared entry point.
+services:
+  firephantom-db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: firephantom
+      POSTGRES_USER: firephantom
+      POSTGRES_PASSWORD: ${AI07_DB_PASSWORD:?Initialize project service environment first}
+    volumes: [firephantom-postgres:/var/lib/postgresql/data]
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U firephantom -d firephantom']
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+  firephantom:
+    image: ai07-firephantom:local
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.firephantom
+    environment:
+      FIREPHANTOM_DATABASE_URL: postgresql://firephantom:${AI07_DB_PASSWORD}@firephantom-db:5432/firephantom
+      FIREPHANTOM_PUBLIC_URL: http://localhost:8765
+      FIREPHANTOM_ASSETS: /data/assets
+      LABEL_STUDIO_URL: http://annotation-platform:8080
+      SD_API_URL: http://host.docker.internal:7861/sdapi/v1/txt2img
+    ports: ['127.0.0.1:8765:8765']
+    volumes: [firephantom-data:/data]
+    depends_on:
+      firephantom-db: {condition: service_healthy}
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8765/health',timeout=4)"]
+      interval: 10s
+      timeout: 5s
+      retries: 15
+    restart: unless-stopped
+volumes:
+  firephantom-postgres:
+  firephantom-data:

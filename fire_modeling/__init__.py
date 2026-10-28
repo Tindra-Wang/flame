@@ -1,0 +1,4 @@
+"""Fire modeling adapters; heavyweight engines are imported only when requested."""
+
+__version__ = "0.1.0"
+__all__ = ["__version__"]

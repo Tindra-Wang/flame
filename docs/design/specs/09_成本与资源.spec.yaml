@@ -1,0 +1,1039 @@
+{
+  "meta": {
+    "title": "PERT 任务成本网络（五人固定角色）",
+    "theme": "tech-blue",
+    "profile": "default",
+    "layout": "horizontal",
+    "canvas": "3104x1776",
+    "font": {
+      "primary": "Microsoft YaHei",
+      "cjk": "Microsoft YaHei",
+      "formula": "Microsoft YaHei"
+    }
+  },
+  "nodes": [
+    {
+      "id": "title",
+      "label": "PERT 任务成本网络（五人固定角色）",
+      "type": "text",
+      "bounds": {
+        "x": 48,
+        "y": 24,
+        "width": 3008,
+        "height": 48
+      },
+      "style": {
+        "fontSize": 28,
+        "align": "left",
+        "fontFamily": "Microsoft YaHei"
+      }
+    },
+    {
+      "id": "subtitle",
+      "label": "与工期图使用相同圆形节点和依赖；节点成本=指定人员实际人时×单价＋归属现金＋硬件摊销；红色为逻辑关键路径",
+      "type": "text",
+      "bounds": {
+        "x": 48,
+        "y": 80,
+        "width": 3008,
+        "height": 48
+      },
+      "style": {
+        "fontSize": 18,
+        "align": "left",
+        "fontFamily": "Microsoft YaHei"
+      }
+    },
+    {
+      "id": "A",
+      "label": "A 需求、数据授权与参照可用性\nPM/QA  18人时\n人工：Σ角色人时×角色单价\n资源：用量×待定单价\nD=3 资源[0,3)",
+      "type": "user",
+      "bounds": {
+        "x": 48,
+        "y": 480,
+        "width": 256,
+        "height": 256
+      },
+      "style": {
+        "fontSize": 14,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FCEBEB",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "B",
+      "label": "B 架构、ER与API契约\nAR  12人时\n人工：Σ角色人时×角色单价\n资源：用量×待定单价\nD=4 资源[3,7)",
+      "type": "user",
+      "bounds": {
+        "x": 352,
+        "y": 480,
+        "width": 256,
+        "height": 256
+      },
+      "style": {
+        "fontSize": 14,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FCEBEB",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "C",
+      "label": "C 测试/CI/Sonar骨架\nQA/OPS  24人时\n人工：Σ角色人时×角色单价\n资源：用量×待定单价\nD=4 资源[7,11)",
+      "type": "user",
+      "bounds": {
+        "x": 656,
+        "y": 160,
+        "width": 256,
+        "height": 256
+      },
+      "style": {
+        "fontSize": 14,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "D",
+      "label": "D Web页面与交互骨架\nDEV  15人时\n人工：Σ角色人时×角色单价\n资源：用量×待定单价\nD=5 资源[7,12)",
+      "type": "user",
+      "bounds": {
+        "x": 656,
+        "y": 480,
+        "width": 256,
+        "height": 256
+      },
+      "style": {
+        "fontSize": 14,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "E",
+      "label": "E API、账户与项目隔离\nDEV  15人时\n人工：Σ角色人时×角色单价\n资源：用量×待定单价\nD=5 资源[12,17)",
+      "type": "user",
+      "bounds": {
+        "x": 656,
+        "y": 800,
+        "width": 256,
+        "height": 256
+      },
+      "style": {
+        "fontSize": 14,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "F",
+      "label": "F FDS/Blender建\n模与算法验证\nAR  24人时\n人工：Σ角色人时×角色单价\n资源：用量×待定单价\nD=8 资源[7,15)",
+      "type": "user",
+      "bounds": {
+        "x": 656,
+        "y": 1120,
+        "width": 256,
+        "height": 256
+      },
+      "style": {
+        "fontSize": 14,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FCEBEB",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "G",
+      "label": "G SD增强原型与可复现性\nAR  18人时\n人工：Σ角色人时×角色单价\n资源：用量×待定单价\nD=6 资源[15,21)",
+      "type": "user",
+      "bounds": {
+        "x": 960,
+        "y": 1120,
+        "width": 256,
+        "height": 256
+      },
+      "style": {
+        "fontSize": 14,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FCEBEB",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "H",
+      "label": "H 异步任务、取消重试与预算\nDEV  15人时\n人工：Σ角色人时×角色单价\n资源：用量×待定单价\nD=5 资源[17,22)",
+      "type": "user",
+      "bounds": {
+        "x": 960,
+        "y": 800,
+        "width": 256,
+        "height": 256
+      },
+      "style": {
+        "fontSize": 14,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "I",
+      "label": "I 统一Web贯通与结果对比\nDEV  15人时\n人工：Σ角色人时×角色单价\n资源：用量×待定单价\nD=5 资源[22,27)",
+      "type": "user",
+      "bounds": {
+        "x": 1264,
+        "y": 480,
+        "width": 256,
+        "height": 256
+      },
+      "style": {
+        "fontSize": 14,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FCEBEB",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "J",
+      "label": "J Label Studio\n同步、审核与质检\nDEV/QA  30人时\n人工：Σ角色人时×角色单价\n资源：用量×待定单价\nD=5 资源[27,32)",
+      "type": "user",
+      "bounds": {
+        "x": 1264,
+        "y": 1120,
+        "width": 256,
+        "height": 256
+      },
+      "style": {
+        "fontSize": 14,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "K",
+      "label": "K DVC冻结、版本与导出\nDEV  12人时\n人工：Σ角色人时×角色单价\n资源：用量×待定单价\nD=4 资源[32,36)",
+      "type": "user",
+      "bounds": {
+        "x": 1568,
+        "y": 800,
+        "width": 256,
+        "height": 256
+      },
+      "style": {
+        "fontSize": 14,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "L",
+      "label": "L 真实数据与物理/检测评价\nAR/QA  42人时\n人工：Σ角色人时×角色单价\n资源：用量×待定单价\nD=7 资源[36,43)",
+      "type": "user",
+      "bounds": {
+        "x": 1872,
+        "y": 1120,
+        "width": 256,
+        "height": 256
+      },
+      "style": {
+        "fontSize": 14,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "M",
+      "label": "M 云预部署、监控告警与备份\nOPS  15人时\n人工：Σ角色人时×角色单价\n资源：用量×待定单价\nD=5 资源[36,41)",
+      "type": "user",
+      "bounds": {
+        "x": 1872,
+        "y": 480,
+        "width": 256,
+        "height": 256
+      },
+      "style": {
+        "fontSize": 14,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FCEBEB",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "N",
+      "label": "N 全流程、性能安全与文档测试\nQA/DEV  36人时\n人工：Σ角色人时×角色单价\n资源：用量×待定单价\nD=6 资源[43,49)",
+      "type": "user",
+      "bounds": {
+        "x": 2176,
+        "y": 800,
+        "width": 256,
+        "height": 256
+      },
+      "style": {
+        "fontSize": 14,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FCEBEB",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "O",
+      "label": "O 云Demo、手册、PPT\n与视频\nPM/OPS  24人时\n人工：Σ角色人时×角色单价\n资源：用量×待定单价\nD=4 资源[49,53)",
+      "type": "user",
+      "bounds": {
+        "x": 2480,
+        "y": 800,
+        "width": 256,
+        "height": 256
+      },
+      "style": {
+        "fontSize": 14,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FCEBEB",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "P",
+      "label": "P 连续可用性观测与缺陷复核\nOPS  21人时\n人工：Σ角色人时×角色单价\n资源：用量×待定单价\nD=7 资源[41,48)",
+      "type": "user",
+      "bounds": {
+        "x": 2176,
+        "y": 160,
+        "width": 256,
+        "height": 256
+      },
+      "style": {
+        "fontSize": 14,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#EAF2FC",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "Q",
+      "label": "Q 验收证据、追溯与交付\nPM/AR/DEV/QA/OPS  45人时\n人工：Σ角色人时×角色单价\n资源：用量×待定单价\nD=3 资源[53,56)",
+      "type": "user",
+      "bounds": {
+        "x": 2784,
+        "y": 480,
+        "width": 256,
+        "height": 256
+      },
+      "style": {
+        "fontSize": 14,
+        "fontFamily": "Microsoft YaHei",
+        "fillColor": "#FCEBEB",
+        "strokeColor": "#64748B"
+      }
+    },
+    {
+      "id": "summary",
+      "label": "总人时：381h；人工成本＝Σ全部节点的角色人时×待定角色单价\n资源成本＝GPU时＋云CPU时＋存储/备份/出网＋电量＋输入/输出token用量，各乘对应待定单价\n总成本＝全部17节点人工与资源成本＋经确认的成本储备；当前不填金额、单价或货币预算\n56日资源排程＋9日时间缓冲＝65工作日；只求关键路径成本会漏算其他必要分支",
+      "type": "text",
+      "bounds": {
+        "x": 48,
+        "y": 1480,
+        "width": 3000,
+        "height": 156
+      },
+      "style": {
+        "fontSize": 21,
+        "align": "left",
+        "fontFamily": "Microsoft YaHei"
+      }
+    },
+    {
+      "id": "legend",
+      "label": "PM产品经理 / AR架构师 / DEV开发工程师 / QA测试师 / OPS运维师；均按3h/工作日。用量和价格分别记录；时间缓冲不等于已支付的成本储备。",
+      "type": "text",
+      "bounds": {
+        "x": 48,
+        "y": 1680,
+        "width": 3000,
+        "height": 56
+      },
+      "style": {
+        "fontSize": 19,
+        "align": "left",
+        "fontFamily": "Microsoft YaHei"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "to": "B",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 3,
+        "strokeColor": "#B42318",
+        "exitX": 1,
+        "exitY": 0.5,
+        "entryX": 0,
+        "entryY": 0.5
+      },
+      "from": "A"
+    },
+    {
+      "to": "C",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 1.5,
+        "strokeColor": "#64748B",
+        "exitX": 1,
+        "exitY": 0.5,
+        "entryX": 0,
+        "entryY": 0.5
+      },
+      "waypoints": [
+        {
+          "x": 632,
+          "y": 608
+        },
+        {
+          "x": 632,
+          "y": 288
+        }
+      ],
+      "from": "B"
+    },
+    {
+      "to": "D",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 1.5,
+        "strokeColor": "#64748B",
+        "exitX": 1,
+        "exitY": 0.5,
+        "entryX": 0,
+        "entryY": 0.5
+      },
+      "from": "B"
+    },
+    {
+      "to": "E",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 1.5,
+        "strokeColor": "#64748B",
+        "exitX": 1,
+        "exitY": 0.5,
+        "entryX": 0,
+        "entryY": 0.5
+      },
+      "waypoints": [
+        {
+          "x": 632,
+          "y": 608
+        },
+        {
+          "x": 632,
+          "y": 928
+        }
+      ],
+      "from": "B"
+    },
+    {
+      "to": "F",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 3,
+        "strokeColor": "#B42318",
+        "exitX": 1,
+        "exitY": 0.5,
+        "entryX": 0,
+        "entryY": 0.5
+      },
+      "waypoints": [
+        {
+          "x": 632,
+          "y": 608
+        },
+        {
+          "x": 632,
+          "y": 1248
+        }
+      ],
+      "from": "B"
+    },
+    {
+      "to": "G",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 3,
+        "strokeColor": "#B42318",
+        "exitX": 1,
+        "exitY": 0.5,
+        "entryX": 0,
+        "entryY": 0.5
+      },
+      "from": "F"
+    },
+    {
+      "to": "H",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 1.5,
+        "strokeColor": "#64748B",
+        "exitX": 1,
+        "exitY": 0.5,
+        "entryX": 0,
+        "entryY": 0.5
+      },
+      "from": "E"
+    },
+    {
+      "to": "I",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 1.5,
+        "strokeColor": "#64748B",
+        "exitX": 1,
+        "exitY": 0.5,
+        "entryX": 0,
+        "entryY": 0.5
+      },
+      "from": "D"
+    },
+    {
+      "to": "I",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 1.5,
+        "strokeColor": "#64748B",
+        "exitX": 1,
+        "exitY": 0.5,
+        "entryX": 0,
+        "entryY": 0.5
+      },
+      "waypoints": [
+        {
+          "x": 1240,
+          "y": 928
+        },
+        {
+          "x": 1240,
+          "y": 608
+        }
+      ],
+      "from": "H"
+    },
+    {
+      "to": "I",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 3,
+        "strokeColor": "#B42318",
+        "exitX": 1,
+        "exitY": 0.5,
+        "entryX": 0,
+        "entryY": 0.5
+      },
+      "waypoints": [
+        {
+          "x": 1240,
+          "y": 1248
+        },
+        {
+          "x": 1240,
+          "y": 608
+        }
+      ],
+      "from": "G"
+    },
+    {
+      "to": "J",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 1.5,
+        "strokeColor": "#64748B",
+        "exitX": 1,
+        "exitY": 0.5,
+        "entryX": 0,
+        "entryY": 0.5
+      },
+      "waypoints": [
+        {
+          "x": 1240,
+          "y": 288
+        },
+        {
+          "x": 1240,
+          "y": 1248
+        }
+      ],
+      "from": "C"
+    },
+    {
+      "to": "J",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 1.5,
+        "strokeColor": "#64748B",
+        "exitX": 0.5,
+        "exitY": 1,
+        "entryX": 0,
+        "entryY": 0.5
+      },
+      "waypoints": [
+        {
+          "x": 784,
+          "y": 1088
+        },
+        {
+          "x": 1240,
+          "y": 1088
+        },
+        {
+          "x": 1240,
+          "y": 1248
+        }
+      ],
+      "from": "E"
+    },
+    {
+      "to": "K",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 1.5,
+        "strokeColor": "#64748B",
+        "exitX": 1,
+        "exitY": 0.5,
+        "entryX": 0,
+        "entryY": 0.5
+      },
+      "from": "H"
+    },
+    {
+      "to": "K",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 1.5,
+        "strokeColor": "#64748B",
+        "exitX": 1,
+        "exitY": 0.5,
+        "entryX": 0,
+        "entryY": 0.5
+      },
+      "waypoints": [
+        {
+          "x": 1544,
+          "y": 1248
+        },
+        {
+          "x": 1544,
+          "y": 928
+        }
+      ],
+      "from": "J"
+    },
+    {
+      "to": "L",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 1.5,
+        "strokeColor": "#64748B",
+        "exitX": 0.5,
+        "exitY": 1,
+        "entryX": 0,
+        "entryY": 0.5
+      },
+      "waypoints": [
+        {
+          "x": 1088,
+          "y": 1424
+        },
+        {
+          "x": 1848,
+          "y": 1424
+        },
+        {
+          "x": 1848,
+          "y": 1248
+        }
+      ],
+      "from": "G"
+    },
+    {
+      "to": "L",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 1.5,
+        "strokeColor": "#64748B",
+        "exitX": 1,
+        "exitY": 0.5,
+        "entryX": 0,
+        "entryY": 0.5
+      },
+      "from": "J"
+    },
+    {
+      "to": "L",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 1.5,
+        "strokeColor": "#64748B",
+        "exitX": 1,
+        "exitY": 0.5,
+        "entryX": 0,
+        "entryY": 0.5
+      },
+      "waypoints": [
+        {
+          "x": 1848,
+          "y": 928
+        },
+        {
+          "x": 1848,
+          "y": 1248
+        }
+      ],
+      "from": "K"
+    },
+    {
+      "to": "M",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 3,
+        "strokeColor": "#B42318",
+        "exitX": 1,
+        "exitY": 0.5,
+        "entryX": 0,
+        "entryY": 0.5
+      },
+      "from": "I"
+    },
+    {
+      "to": "M",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 1.5,
+        "strokeColor": "#64748B",
+        "exitX": 1,
+        "exitY": 0.5,
+        "entryX": 0,
+        "entryY": 0.5
+      },
+      "waypoints": [
+        {
+          "x": 1848,
+          "y": 928
+        },
+        {
+          "x": 1848,
+          "y": 608
+        }
+      ],
+      "from": "K"
+    },
+    {
+      "to": "N",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 3,
+        "strokeColor": "#B42318",
+        "exitX": 1,
+        "exitY": 0.5,
+        "entryX": 0,
+        "entryY": 0.5
+      },
+      "waypoints": [
+        {
+          "x": 2152,
+          "y": 608
+        },
+        {
+          "x": 2152,
+          "y": 928
+        }
+      ],
+      "from": "M"
+    },
+    {
+      "to": "N",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 1.5,
+        "strokeColor": "#64748B",
+        "exitX": 1,
+        "exitY": 0.5,
+        "entryX": 0,
+        "entryY": 0.5
+      },
+      "waypoints": [
+        {
+          "x": 2152,
+          "y": 1248
+        },
+        {
+          "x": 2152,
+          "y": 928
+        }
+      ],
+      "from": "L"
+    },
+    {
+      "to": "O",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 3,
+        "strokeColor": "#B42318",
+        "exitX": 1,
+        "exitY": 0.5,
+        "entryX": 0,
+        "entryY": 0.5
+      },
+      "from": "N"
+    },
+    {
+      "to": "P",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 1.5,
+        "strokeColor": "#64748B",
+        "exitX": 1,
+        "exitY": 0.5,
+        "entryX": 0,
+        "entryY": 0.5
+      },
+      "waypoints": [
+        {
+          "x": 2152,
+          "y": 608
+        },
+        {
+          "x": 2152,
+          "y": 288
+        }
+      ],
+      "from": "M"
+    },
+    {
+      "to": "Q",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 3,
+        "strokeColor": "#B42318",
+        "exitX": 1,
+        "exitY": 0.5,
+        "entryX": 0,
+        "entryY": 0.5
+      },
+      "waypoints": [
+        {
+          "x": 2760,
+          "y": 928
+        },
+        {
+          "x": 2760,
+          "y": 608
+        }
+      ],
+      "from": "O"
+    },
+    {
+      "to": "Q",
+      "label": "",
+      "type": "primary",
+      "labelOffset": {
+        "x": 0,
+        "y": -16
+      },
+      "style": {
+        "endArrow": "open",
+        "endSize": 12,
+        "strokeWidth": 1.5,
+        "strokeColor": "#64748B",
+        "exitX": 1,
+        "exitY": 0.5,
+        "entryX": 0,
+        "entryY": 0.5
+      },
+      "waypoints": [
+        {
+          "x": 2760,
+          "y": 288
+        },
+        {
+          "x": 2760,
+          "y": 608
+        }
+      ],
+      "from": "P"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+FROM ai07-modeling:cpu
+USER root
+COPY engines/downloads/fds.sh /tmp/fds.sh
+RUN echo 'ba8793b974150fdb778b3db0b69ab8db4e4668d5c52987a317e7f5ed58102ea0  /tmp/fds.sh' | sha256sum -c - \
+ && mkdir -p /opt/fds \
+ && line=$(awk '/^__TARFILE_FOLLOWS__/{print NR+1;exit}' /tmp/fds.sh) \
+ && tail -n +${line} /tmp/fds.sh | tar -xz --strip-components=1 -C /opt/fds \
+ && rm /tmp/fds.sh
+COPY docker/fds /usr/local/bin/fds
+RUN chmod +x /usr/local/bin/fds
+ENV OMP_NUM_THREADS=2
+RUN --mount=type=cache,target=/root/.cache/pip pip install fdsreader==1.14.0
+COPY fire_modeling /app/fire_modeling
+COPY integrations/firephantom/firephantom /app/integrations/firephantom/firephantom

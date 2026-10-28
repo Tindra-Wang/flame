@@ -1,0 +1,5 @@
+# Offline update of the existing AI-07 runtime. Run npm run build first.
+# The standard Dockerfile remains the clean-machine build path.
+FROM ai07-platform:web
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY dist /usr/share/nginx/html
